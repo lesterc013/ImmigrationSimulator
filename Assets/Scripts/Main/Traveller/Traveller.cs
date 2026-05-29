@@ -14,12 +14,13 @@ namespace ImmigrationSim.Main.Traveller
         public Dictionary<CheckType, CheckTimings> Timings { get; private set; }
         public TravellerType Type { get; private set; }
 
-        public Traveller()
+        public Traveller(TravellerType travellerType)
         {
             Id = nextId;
             nextId++;
             SpawnTime = SimClock.Instance.TotalSimTimeElapsed;
             Timings = new Dictionary<CheckType, CheckTimings>();
+            Type = travellerType;
         }
 
         public void RecordQueueJoin(CheckType check)
