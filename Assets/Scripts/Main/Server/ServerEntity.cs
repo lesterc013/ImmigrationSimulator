@@ -8,17 +8,49 @@ namespace ImmigrationSim.Main.Server
         //Fields it needs:
         private TravellerEntity currentTraveller;
         private float remainingTime;
-        private CheckType checkType; // which stage this server belongs to
-        public event Action<TravellerEntity> OnServerFreed;
-        public bool IsAvailable { get; private set; } = true;
+        private CheckType serverCheckType;
+        public bool IsAvailable { get; private set; }
 
-        // Implements IServer.
+        public void Init(CheckType checkType)
+        {
+            serverCheckType = checkType;
+            IsAvailable = true;
+        }
 
-        // Responsibilities:
+        private void Update()
+        {
+            if (IsAvailable)
+                return;
 
-        // Hold current Traveller being processed and a countdown timer
-        // On Assign: mark unavailable, stamp RecordServiceStart on Traveller, draw processing time from ProcessingTimeGenerator
-        // On Update: tick countdown down using SimClock.Instance.SimDeltaTime
-        // When countdown hits zero: stamp RecordServiceEnd, raise OnServerFreed event carrying the completed Traveller, clear internal state and mark available again
+            // Has been assigned so we need to tick down the clock
+            if (remainingTime > 0)
+            {
+                remainingTime -= SimClock.Instance.SimDeltaTime;
+            }
+
+            // Release Traveller and reset internal state.
+            if (remainingTime <= 0)
+            {
+                currentTraveller.RecordServiceEnd(serverCheckType);
+                // TODO: ServerEventChannel broadcast a Server has been freed.
+                FreeServer();
+            }
+        }
+
+        public void Assign(TravellerEntity traveller)
+        {
+            IsAvailable = false;
+            traveller.RecordServiceStart(serverCheckType);
+            // TODO: Set remainingTime from the ProcessingTimeGenerator
+            remainingTime = 5f;
+            currentTraveller = traveller;
+        }
+
+        private void FreeServer()
+        {
+            IsAvailable = true;
+            currentTraveller = null;
+            remainingTime = 0;
+        }
     }
 }
