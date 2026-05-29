@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace ImmigrationSim.Main.Traveller
@@ -6,30 +7,45 @@ namespace ImmigrationSim.Main.Traveller
     {
         private static int nextId = 0;
         public int Id { get; private set; }
-        //needs Id, spawnTime, queueJoinTime, serviceStartTime, TravellerType enum
         public float SpawnTime { get; private set; }
-        // Is it will need to have 2 different sets of QueueJoin and ServiceStart times? Not very scalable right?
-        // Or should I use a Dictionary to update a Traveller's timings?
-        public float QueueJoinTime { get; private set; }
-        public float ServiceStartTime { get; private set; }
-
-        // TODO: TravellerType Citizen or Foreigner
+        /// <summary>
+        /// Holds all the important timings for a certain check stage e.g. Security - QueueJoinTime, ServerStartTime, ServerEndTime
+        /// </summary>
+        public Dictionary<CheckType, CheckTimings> Timings { get; private set; }
+        public TravellerType Type { get; private set; }
 
         public Traveller()
         {
             Id = nextId;
             nextId++;
             SpawnTime = SimClock.Instance.TotalSimTimeElapsed;
+            Timings = new Dictionary<CheckType, CheckTimings>();
         }
 
-        public void SetQueueJoinTime(float time)
+        public void RecordQueueJoin(CheckType check)
         {
-            QueueJoinTime = time;
+            EnsureCheckAvailable(check);
+            Timings[check].QueueJoinTime = SimClock.Instance.TotalSimTimeElapsed;
         }
 
-        public void SetServiceStartTime(float time)
+        public void RecordServiceStart(CheckType check)
         {
-            ServiceStartTime = time;
+            EnsureCheckAvailable(check);
+            Timings[check].ServiceStartTime = SimClock.Instance.TotalSimTimeElapsed;
+        }
+
+        public void RecordServiceEnd(CheckType check)
+        {
+            EnsureCheckAvailable(check);
+            Timings[check].ServiceEndTime = SimClock.Instance.TotalSimTimeElapsed;
+        }
+
+        private void EnsureCheckAvailable(CheckType check)
+        {
+            if (!Timings.ContainsKey(check))
+            {
+                Timings[check] = new CheckTimings();
+            }
         }
 
         /// <summary>
