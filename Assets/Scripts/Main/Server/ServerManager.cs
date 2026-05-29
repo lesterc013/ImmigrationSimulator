@@ -29,5 +29,11 @@ namespace ImmigrationSim.Main
                 servers.Add(serverScript);
             }
         }
+
+        public void ResetServerManager()
+        {
+            // Destroy all the created servers
+            // Clear the script
+        }
     }
 }
