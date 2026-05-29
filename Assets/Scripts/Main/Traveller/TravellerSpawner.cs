@@ -35,7 +35,7 @@ namespace ImmigrationSim.Main.TravellerSpawner
 
         private float GetTimeTillSpawn()
         {
-            return -Mathf.Log(1 - Random.value) / lambda;
+            return -Mathf.Log(1 - Random.Range(0, 0.999999f)) / lambda;
         }
     }
 }
