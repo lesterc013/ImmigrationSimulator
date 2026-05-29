@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace ImmigrationSim.Main.TravellerSpawner
+namespace ImmigrationSim.Main.Traveller
 {
     public class TravellerSpawner : MonoBehaviour
     {
