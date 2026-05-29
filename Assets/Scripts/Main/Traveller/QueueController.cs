@@ -9,6 +9,9 @@ namespace ImmigrationSim.Main.Traveller
         [Tooltip("Drag in the correct TravellerEventChannel i.e. Security or Immigration for this case.")]
         private TravellerEventChannel travellerEc;
 
+        [SerializeField]
+        private CheckType queueCheckType;
+
         private Queue<Traveller> queue;
 
         private void Awake()
@@ -26,6 +29,7 @@ namespace ImmigrationSim.Main.Traveller
         private void HandleNewTraveller(Traveller newTraveller)
         {
             queue.Enqueue(newTraveller);
+            newTraveller.RecordQueueJoin(queueCheckType);
             TryAssignTraveller();
         }
 
