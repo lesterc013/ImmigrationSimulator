@@ -12,6 +12,11 @@ namespace ImmigrationSim.Main.Traveller
         [Tooltip("Drag the first TravellerEventChannel here: Security in this case.")]
         private TravellerEventChannel travellerEc;
 
+        [SerializeField]
+        [Tooltip("To set the percentage of Citizens to Foreigners.")]
+        [Range(0, 100)]
+        private float citizenForeignerSplit = 50;
+
         private float timeTillSpawn;
 
         private void Awake()
@@ -33,11 +38,25 @@ namespace ImmigrationSim.Main.Traveller
 
         private void SpawnTraveller()
         {
-            var newTraveller = new Traveller();
+
+            var newTraveller = new Traveller(GetTravellerType());
             travellerEc.RaiseNewTravellerArrived(newTraveller);
 
             // After spawning, reset the countdown timer with a cumulative timing to help with the spawn overshoots.
             timeTillSpawn += GetTimeTillSpawn();
+        }
+
+        private TravellerType GetTravellerType()
+        {
+            var diceRoll = Random.Range(0f, 100f);
+            if (diceRoll <= citizenForeignerSplit)
+            {
+                return TravellerType.Citizen;
+            }
+            else
+            {
+                return TravellerType.Foreigner;
+            }
         }
 
         private float GetTimeTillSpawn()
