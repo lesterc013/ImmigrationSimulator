@@ -8,6 +8,10 @@ namespace ImmigrationSim.Main.Traveller
         [Tooltip("Arrival per second")]
         private float lambda = 1f;
 
+        [SerializeField]
+        [Tooltip("Drag the first TravellerEventChannel here: Security in this case.")]
+        private TravellerEventChannel travellerEc;
+
         private float timeTillSpawn;
 
         private void Awake()
@@ -29,6 +33,9 @@ namespace ImmigrationSim.Main.Traveller
 
         private void SpawnTraveller()
         {
+            var newTraveller = new Traveller();
+            travellerEc.RaiseNewTravellerArrived(newTraveller);
+
             // After spawning, reset the countdown timer with a cumulative timing to help with the spawn overshoots.
             timeTillSpawn += GetTimeTillSpawn();
         }
