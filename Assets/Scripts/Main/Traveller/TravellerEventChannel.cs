@@ -6,9 +6,9 @@ namespace ImmigrationSim.Main.Traveller
     [CreateAssetMenu(fileName = "TravellerEventChannel", menuName = "Scriptable Objects/TravellerEventChannel")]
     public class TravellerEventChannel : ScriptableObject
     {
-        public Action<Traveller> OnNewTraveller;
+        public Action<TravellerEntity> OnNewTraveller;
 
-        public void RaiseNewTravellerArrived(Traveller newTraveller)
+        public void RaiseNewTravellerArrived(TravellerEntity newTraveller)
         {
             OnNewTraveller?.Invoke(newTraveller);
         }

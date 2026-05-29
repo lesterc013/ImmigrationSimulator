@@ -39,7 +39,7 @@ namespace ImmigrationSim.Main.Traveller
         private void SpawnTraveller()
         {
 
-            var newTraveller = new Traveller(GetTravellerType());
+            var newTraveller = new TravellerEntity(GetTravellerType());
             travellerEc.RaiseNewTravellerArrived(newTraveller);
 
             // After spawning, reset the countdown timer with a cumulative timing to help with the spawn overshoots.

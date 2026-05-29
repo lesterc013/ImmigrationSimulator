@@ -12,11 +12,11 @@ namespace ImmigrationSim.Main.Traveller
         [SerializeField]
         private CheckType queueCheckType;
 
-        private Queue<Traveller> queue;
+        private Queue<TravellerEntity> queue;
 
         private void Awake()
         {
-            queue = new Queue<Traveller>();
+            queue = new Queue<TravellerEntity>();
 
             travellerEc.OnNewTraveller += HandleNewTraveller;
             // Need also subscribe to Server Event Channel OnFreeServer to receive a call from a free Server
@@ -26,7 +26,7 @@ namespace ImmigrationSim.Main.Traveller
         // Subscribe to shared event with TravellerSpawner to receive a new Traveller
         // Push Traveller into Queue
         // Call TryAssign
-        private void HandleNewTraveller(Traveller newTraveller)
+        private void HandleNewTraveller(TravellerEntity newTraveller)
         {
             queue.Enqueue(newTraveller);
             newTraveller.RecordQueueJoin(queueCheckType);

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace ImmigrationSim.Main.Traveller
 {
-    public class Traveller
+    public class TravellerEntity
     {
         private static int nextId = 0;
         public int Id { get; private set; }
@@ -14,7 +14,7 @@ namespace ImmigrationSim.Main.Traveller
         public Dictionary<CheckType, CheckTimings> Timings { get; private set; }
         public TravellerType Type { get; private set; }
 
-        public Traveller(TravellerType travellerType)
+        public TravellerEntity(TravellerType travellerType)
         {
             Id = nextId;
             nextId++;
