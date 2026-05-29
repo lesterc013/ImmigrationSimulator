@@ -10,7 +10,7 @@ namespace ImmigrationSim.Main
 
         [SerializeField]
         [Tooltip("Multiplier for the Sim Clock. Value of 60 would mean 1s irl = 60s SimTime")]
-        private float simSpeed = 60f;
+        private float simSpeed = 1f;
 
         /// <summary>
         /// Return the deltaTime multiplied by the simSpeed.

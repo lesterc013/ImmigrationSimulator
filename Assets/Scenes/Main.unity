@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 253dd2b8bb11bad4eb6b7eeeb4215f27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Main::ImmigrationSim.Main.SimClock
-  simSpeed: 60
+  simSpeed: 1
 --- !u!4 &14993239
 Transform:
   m_ObjectHideFlags: 0
@@ -415,6 +415,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Main::ImmigrationSim.Main.Traveller.QueueController
   travellerEc: {fileID: 11400000, guid: 7073d8ee585ac89429200d7825bb58f5, type: 2}
+  queueCheckType: 0
 --- !u!4 &1318977707
 Transform:
   m_ObjectHideFlags: 0
