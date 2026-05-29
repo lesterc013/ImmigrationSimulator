@@ -315,7 +315,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2932740343025292446, guid: 34a9be414db7eb54ba3e6799e0f06cfd, type: 3}
       propertyPath: m_text
-      value: No. Security Servers
+      value: No. Security Servers (max 10)
       objectReference: {fileID: 0}
     - target: {fileID: 5353720332973957450, guid: 34a9be414db7eb54ba3e6799e0f06cfd, type: 3}
       propertyPath: m_Name
@@ -363,6 +363,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 382076238554495716, guid: 34a9be414db7eb54ba3e6799e0f06cfd, type: 3}
   m_PrefabInstance: {fileID: 420901131}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &420901133 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6571646581371632787, guid: 34a9be414db7eb54ba3e6799e0f06cfd, type: 3}
+  m_PrefabInstance: {fileID: 420901131}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2da0c512f12947e489f739169773d7ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TMP_InputField
 --- !u!1001 &605958815
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -503,6 +514,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 382076238554495716, guid: 34a9be414db7eb54ba3e6799e0f06cfd, type: 3}
   m_PrefabInstance: {fileID: 605958815}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &605958817 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6571646581371632787, guid: 34a9be414db7eb54ba3e6799e0f06cfd, type: 3}
+  m_PrefabInstance: {fileID: 605958815}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2da0c512f12947e489f739169773d7ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TMP_InputField
 --- !u!1 &625009210
 GameObject:
   m_ObjectHideFlags: 0
@@ -870,7 +892,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1254558880}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1522418940}
+        m_TargetAssemblyTypeName: ImmigrationSim.Setup.FormHandler, Assembly-CSharp
+        m_MethodName: StartSim
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1254558880
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1184,6 +1218,68 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 382076238554495716, guid: 34a9be414db7eb54ba3e6799e0f06cfd, type: 3}
   m_PrefabInstance: {fileID: 1418598091}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1418598093 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6571646581371632787, guid: 34a9be414db7eb54ba3e6799e0f06cfd, type: 3}
+  m_PrefabInstance: {fileID: 1418598091}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2da0c512f12947e489f739169773d7ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TMP_InputField
+--- !u!1 &1522418939
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1522418941}
+  - component: {fileID: 1522418940}
+  m_Layer: 0
+  m_Name: Form Handler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1522418940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1522418939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9eaadd74a582c274691eb46a65830e97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ImmigrationSim.Setup.FormHandler
+  simConfig: {fileID: 11400000, guid: d5da3f784c7c29947a81938639d6ba4d, type: 2}
+  travellersPerSecondField: {fileID: 605958817}
+  simSpeedField: {fileID: 1418598093}
+  simDurationField: {fileID: 1843959657}
+  securityServerCountField: {fileID: 420901133}
+  immigrationServerCountField: {fileID: 1752533982}
+  citizenRatioField: {fileID: 1696610522}
+--- !u!4 &1522418941
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1522418939}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1696610520
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1278,7 +1374,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2932740343025292446, guid: 34a9be414db7eb54ba3e6799e0f06cfd, type: 3}
       propertyPath: m_text
-      value: 'Citizen : Foreigner %'
+      value: "Citizen : Foreigner % \n(0 - 100)"
       objectReference: {fileID: 0}
     - target: {fileID: 5353720332973957450, guid: 34a9be414db7eb54ba3e6799e0f06cfd, type: 3}
       propertyPath: m_Name
@@ -1326,6 +1422,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 382076238554495716, guid: 34a9be414db7eb54ba3e6799e0f06cfd, type: 3}
   m_PrefabInstance: {fileID: 1696610520}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1696610522 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6571646581371632787, guid: 34a9be414db7eb54ba3e6799e0f06cfd, type: 3}
+  m_PrefabInstance: {fileID: 1696610520}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2da0c512f12947e489f739169773d7ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TMP_InputField
 --- !u!1001 &1752533980
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1420,7 +1527,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2932740343025292446, guid: 34a9be414db7eb54ba3e6799e0f06cfd, type: 3}
       propertyPath: m_text
-      value: No. Immigration Servers
+      value: No. Immigration Servers (max 10)
       objectReference: {fileID: 0}
     - target: {fileID: 5353720332973957450, guid: 34a9be414db7eb54ba3e6799e0f06cfd, type: 3}
       propertyPath: m_Name
@@ -1468,6 +1575,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 382076238554495716, guid: 34a9be414db7eb54ba3e6799e0f06cfd, type: 3}
   m_PrefabInstance: {fileID: 1752533980}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1752533982 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6571646581371632787, guid: 34a9be414db7eb54ba3e6799e0f06cfd, type: 3}
+  m_PrefabInstance: {fileID: 1752533980}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2da0c512f12947e489f739169773d7ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TMP_InputField
 --- !u!1001 &1843959655
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1558,7 +1676,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2932740343025292446, guid: 34a9be414db7eb54ba3e6799e0f06cfd, type: 3}
       propertyPath: m_text
-      value: Sim Duration
+      value: "Sim Duration \n(sim seconds)"
       objectReference: {fileID: 0}
     - target: {fileID: 5353720332973957450, guid: 34a9be414db7eb54ba3e6799e0f06cfd, type: 3}
       propertyPath: m_Name
@@ -1606,6 +1724,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 382076238554495716, guid: 34a9be414db7eb54ba3e6799e0f06cfd, type: 3}
   m_PrefabInstance: {fileID: 1843959655}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1843959657 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6571646581371632787, guid: 34a9be414db7eb54ba3e6799e0f06cfd, type: 3}
+  m_PrefabInstance: {fileID: 1843959655}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2da0c512f12947e489f739169773d7ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TMP_InputField
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1613,3 +1742,4 @@ SceneRoots:
   - {fileID: 625009213}
   - {fileID: 723620104}
   - {fileID: 283286258}
+  - {fileID: 1522418941}
