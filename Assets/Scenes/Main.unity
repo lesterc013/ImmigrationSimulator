@@ -462,6 +462,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Main::ImmigrationSim.Main.TravellerSpawner.TravellerSpawner
   lambda: 1
   travellerEc: {fileID: 11400000, guid: 7073d8ee585ac89429200d7825bb58f5, type: 2}
+  citizenForeignerSplit: 60.5
 --- !u!4 &1727485108
 Transform:
   m_ObjectHideFlags: 0
