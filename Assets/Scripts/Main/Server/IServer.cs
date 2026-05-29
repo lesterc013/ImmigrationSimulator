@@ -2,8 +2,8 @@ using UnityEngine;
 
 namespace ImmigrationSim.Main
 {
-    public class IServer
+    public interface IServer
     {
-    
+        
     }
 }
