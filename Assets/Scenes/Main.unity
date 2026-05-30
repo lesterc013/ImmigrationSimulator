@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 253dd2b8bb11bad4eb6b7eeeb4215f27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Main::ImmigrationSim.Main.SimClock
-  simSpeed: 1
+  simConfig: {fileID: 11400000, guid: d5da3f784c7c29947a81938639d6ba4d, type: 2}
 --- !u!4 &14993239
 Transform:
   m_ObjectHideFlags: 0
@@ -529,7 +529,7 @@ GameObject:
   - component: {fileID: 928977603}
   - component: {fileID: 928977602}
   m_Layer: 0
-  m_Name: Server Manager
+  m_Name: Security Server Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -547,9 +547,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a774d7bcbfc61f542b8a0ca5660c9c8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Main::ImmigrationSim.Main.ServerManager
-  numberOfServers: 5
   checkType: 0
   serverPrefab: {fileID: 877574034008326445, guid: b4430b109df4ae64fa3e8c72990fc824, type: 3}
+  simConfig: {fileID: 11400000, guid: d5da3f784c7c29947a81938639d6ba4d, type: 2}
 --- !u!4 &928977603
 Transform:
   m_ObjectHideFlags: 0
@@ -929,6 +929,53 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1475341868
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1475341870}
+  - component: {fileID: 1475341869}
+  m_Layer: 0
+  m_Name: Immigration Server Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1475341869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1475341868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a774d7bcbfc61f542b8a0ca5660c9c8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Main::ImmigrationSim.Main.ServerManager
+  checkType: 1
+  serverPrefab: {fileID: 877574034008326445, guid: b4430b109df4ae64fa3e8c72990fc824, type: 3}
+  simConfig: {fileID: 11400000, guid: d5da3f784c7c29947a81938639d6ba4d, type: 2}
+--- !u!4 &1475341870
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1475341868}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1727485106
 GameObject:
   m_ObjectHideFlags: 0
@@ -958,9 +1005,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab6b0a3fe76d57c4ebd0570baa288d9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Main::ImmigrationSim.Main.TravellerSpawner.TravellerSpawner
-  lambda: 1
   travellerEc: {fileID: 11400000, guid: 7073d8ee585ac89429200d7825bb58f5, type: 2}
-  citizenForeignerSplit: 60.5
+  simConfig: {fileID: 11400000, guid: d5da3f784c7c29947a81938639d6ba4d, type: 2}
 --- !u!4 &1727485108
 Transform:
   m_ObjectHideFlags: 0
@@ -1030,6 +1076,7 @@ SceneRoots:
   - {fileID: 1727485108}
   - {fileID: 1318977707}
   - {fileID: 928977603}
+  - {fileID: 1475341870}
   - {fileID: 1147116124}
   - {fileID: 1306506118}
   - {fileID: 1941784950}

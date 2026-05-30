@@ -1,3 +1,4 @@
+using ImmigrationSim.Core;
 using UnityEngine;
 
 namespace ImmigrationSim.Main.Traveller
@@ -5,22 +6,21 @@ namespace ImmigrationSim.Main.Traveller
     public class TravellerSpawner : MonoBehaviour
     {
         [SerializeField]
-        [Tooltip("Arrival per second")]
-        private float lambda = 1f;
-
-        [SerializeField]
         [Tooltip("Drag the first TravellerEventChannel here: Security in this case.")]
         private TravellerEventChannel travellerEc;
 
         [SerializeField]
-        [Tooltip("To set the percentage of Citizens to Foreigners.")]
-        [Range(0, 100)]
-        private float citizenForeignerSplit = 50;
+        private SimConfig simConfig;
+
+        private float travellersPerSecond;
+        private float citizenForeignerSplit;
 
         private float timeTillSpawn;
 
         private void Awake()
         {
+            travellersPerSecond = simConfig.TravellersPerSecond;
+            citizenForeignerSplit = simConfig.CitizenRatio;
             timeTillSpawn = GetTimeTillSpawn();
         }
 
@@ -61,7 +61,7 @@ namespace ImmigrationSim.Main.Traveller
 
         private float GetTimeTillSpawn()
         {
-            return -Mathf.Log(1 - Random.Range(0, 0.999999f)) / lambda;
+            return -Mathf.Log(1 - Random.Range(0, 0.999999f)) / travellersPerSecond;
         }
     }
 }

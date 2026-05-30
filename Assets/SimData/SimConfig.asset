@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SimConfig
   m_EditorClassIdentifier: Assembly-CSharp::ImmigrationSim.SimConfig
   TravellersPerSecond: 1
-  SimSpeed: 1
+  SimSpeed: 10
   SimDuration: 3600
   SecurityServerCount: 5
   ImmigrationServerCount: 5

@@ -35,6 +35,7 @@ namespace ImmigrationSim.Main
             else
             {
                 _instance = this;
+                simSpeed = simConfig.SimSpeed;
             }
         }
 
