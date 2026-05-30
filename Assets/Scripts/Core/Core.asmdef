@@ -1,9 +1,7 @@
 {
-    "name": "Main",
-    "rootNamespace": "ImmigrationSim.Main",
-    "references": [
-        "GUID:70b26df22c2a8c64f99f037a16be8b33"
-    ],
+    "name": "Core",
+    "rootNamespace": "ImmigrationSim.Core",
+    "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

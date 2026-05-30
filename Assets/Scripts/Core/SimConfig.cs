@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace ImmigrationSim
+namespace ImmigrationSim.Core
 {
     [CreateAssetMenu(fileName = "SimConfig", menuName = "Scriptable Objects/SimConfig")]
     public class SimConfig : ScriptableObject

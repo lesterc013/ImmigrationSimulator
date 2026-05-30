@@ -1,3 +1,4 @@
+using ImmigrationSim.Core;
 using UnityEngine;
 
 namespace ImmigrationSim.Main
@@ -5,12 +6,12 @@ namespace ImmigrationSim.Main
     public class SimClock : MonoBehaviour
     {
         private static SimClock _instance;
-
         public static SimClock Instance { get { return _instance; } }
 
         [SerializeField]
-        [Tooltip("Multiplier for the Sim Clock. Value of 60 would mean 1s irl = 60s SimTime")]
-        private float simSpeed = 1f;
+        private SimConfig simConfig;
+
+        private float simSpeed;
 
         /// <summary>
         /// Return the deltaTime multiplied by the simSpeed.

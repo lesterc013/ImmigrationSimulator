@@ -1,7 +1,7 @@
+using ImmigrationSim.Core;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using static UnityEngine.Rendering.STP;
 
 namespace ImmigrationSim.Setup
 {
