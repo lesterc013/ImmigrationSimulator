@@ -1,5 +1,6 @@
 using ImmigrationSim.Core;
 using ImmigrationSim.Main.Server;
+using ImmigrationSim.Main.Traveller;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,6 +10,10 @@ namespace ImmigrationSim.Main
     {
         [SerializeField]
         private CheckType checkType;
+
+        [SerializeField]
+        [Tooltip("Drag in the corresponding TravellerEventChannel to checkType.")]
+        private TravellerEventChannel travellerEventChannel;
 
         [SerializeField]
         private GameObject serverPrefab;
@@ -31,8 +36,8 @@ namespace ImmigrationSim.Main
             }
             else
             {
-                // Just set default as the num of security server counts.
-                numberOfServers = simConfig.SecurityServerCount;
+                Debug.LogError($"ServerManager: unhandled CheckType {checkType}");
+                numberOfServers = 1;
             }
 
             servers = new List<ServerEntity>();
@@ -41,15 +46,24 @@ namespace ImmigrationSim.Main
             {
                 var server = Instantiate(serverPrefab, transform);
                 var serverScript = server.GetComponent<ServerEntity>();
-                serverScript.Init(checkType);
+                serverScript.Init(checkType, travellerEventChannel);
                 servers.Add(serverScript);
             }
         }
 
-        public void ResetServerManager()
+        public bool FindFreeServer(out IServer freeServer)
         {
-            // Destroy all the created servers
-            // Clear the script
+            foreach (var serverEntity in servers)
+            {
+                if (serverEntity.IsAvailable)
+                {
+                    freeServer = serverEntity;
+                    return true;
+                }
+            }
+
+            freeServer = null;
+            return false;
         }
     }
 }

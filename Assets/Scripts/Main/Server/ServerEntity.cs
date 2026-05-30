@@ -9,12 +9,16 @@ namespace ImmigrationSim.Main.Server
         private TravellerEntity currentTraveller;
         private float remainingTime;
         private CheckType serverCheckType;
+        private TravellerEventChannel travellerEventChannel;
+
         public bool IsAvailable { get; private set; }
 
-        public void Init(CheckType checkType)
+        // DI in the checkType and corresponding TravellerEventChannel
+        public void Init(CheckType checkType, TravellerEventChannel travellerEventChannel)
         {
             serverCheckType = checkType;
             IsAvailable = true;
+            this.travellerEventChannel = travellerEventChannel;
         }
 
         private void Update()
@@ -31,18 +35,23 @@ namespace ImmigrationSim.Main.Server
             // Release Traveller and reset internal state.
             if (remainingTime <= 0)
             {
+                Debug.Log("Server freed.");
                 currentTraveller.RecordServiceEnd(serverCheckType);
-                // TODO: ServerEventChannel broadcast a Server has been freed.
+                // This is to tell its QueueController to call TryAssign().
+                travellerEventChannel.RaiseServerReadyForNext();
+                // This is to flow the Traveller downstream to the next Queue or Sink.
+                travellerEventChannel.RaiseTravellerExitingService(currentTraveller);
                 FreeServer();
             }
         }
 
         public void Assign(TravellerEntity traveller)
         {
+            Debug.Log("New traveller assigned.");
             IsAvailable = false;
             traveller.RecordServiceStart(serverCheckType);
             // TODO: Set remainingTime from the ProcessingTimeGenerator
-            remainingTime = 5f;
+            remainingTime = 20f;
             currentTraveller = traveller;
         }
 

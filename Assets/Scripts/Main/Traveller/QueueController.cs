@@ -6,11 +6,20 @@ namespace ImmigrationSim.Main.Traveller
     public class QueueController : MonoBehaviour
     {
         [SerializeField]
-        [Tooltip("Drag in the correct TravellerEventChannel i.e. Security or Immigration for this case.")]
-        private TravellerEventChannel travellerEc;
+        [Tooltip("Drag in previous checkType's TravellerEventChannel - for the first checkType, it is its own one.")]
+        private TravellerEventChannel inflowTravellerEventChannel;
+
+        [SerializeField]
+        [Tooltip("Drag in own TravellerEventChannel.")]
+        private TravellerEventChannel ownTravellerEventChannel;
 
         [SerializeField]
         private CheckType queueCheckType;
+
+        [SerializeField]
+        [Tooltip("Drag in the corresponding server manager based on this check type.")]
+        // Note: The reason this is a direct reference instead of an Event is because we need the correct ServerManager to respond to the "is there free server?" query.
+        private ServerManager serverManager;
 
         private Queue<TravellerEntity> queue;
 
@@ -18,8 +27,8 @@ namespace ImmigrationSim.Main.Traveller
         {
             queue = new Queue<TravellerEntity>();
 
-            travellerEc.OnNewTraveller += HandleNewTraveller;
-            // Need also subscribe to Server Event Channel OnFreeServer to receive a call from a free Server
+            inflowTravellerEventChannel.OnNewTraveller += HandleNewTraveller;
+            ownTravellerEventChannel.OnServerReadyForNext += HandleServerFreedUp;
         }
 
         // NewTraveller received
@@ -30,6 +39,11 @@ namespace ImmigrationSim.Main.Traveller
         {
             queue.Enqueue(newTraveller);
             newTraveller.RecordQueueJoin(queueCheckType);
+            TryAssignTraveller();
+        }
+
+        private void HandleServerFreedUp()
+        {
             TryAssignTraveller();
         }
 
@@ -45,12 +59,18 @@ namespace ImmigrationSim.Main.Traveller
                 return;
             }
 
-            Debug.Log("Check if ServerManager has a free Server, get back a Server interface/object and call the Assign method on it. Then done. Otherwise dont do anything.");
+            Debug.Log($"Queue length now: {queue.Count}");
+
+            if (serverManager.FindFreeServer(out IServer freeServer))
+            {
+                freeServer.Assign(queue.Dequeue());
+            }
         }
 
         private void OnDestroy()
         {
-            travellerEc.OnNewTraveller -= HandleNewTraveller;
+            inflowTravellerEventChannel.OnNewTraveller -= HandleNewTraveller;
+            ownTravellerEventChannel.OnServerReadyForNext -= HandleServerFreedUp;
         }
     }
 }
