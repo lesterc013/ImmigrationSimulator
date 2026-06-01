@@ -1,3 +1,4 @@
+using ImmigrationSim.Main.QueueController;
 using ImmigrationSim.Main.Traveller;
 using UnityEngine;
 
@@ -9,12 +10,12 @@ namespace ImmigrationSim.Main.Server
         private TravellerEntity currentTraveller;
         private float remainingTime;
         private StageType serverStageType;
-        private TravellerEventChannel travellerEventChannel;
+        private QueueControllerEventChannel travellerEventChannel;
 
         public bool IsAvailable { get; private set; }
 
         // DI in the stageType and corresponding TravellerEventChannel
-        public void Init(StageType stageType, TravellerEventChannel travellerEventChannel)
+        public void Init(StageType stageType, QueueControllerEventChannel travellerEventChannel)
         {
             serverStageType = stageType;
             IsAvailable = true;

@@ -9,6 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51e79c1aec587f749a017f1101206d8f, type: 3}
-  m_Name: SecurityTravellerEventChannel
+  m_Script: {fileID: 11500000, guid: 2a56d4cd9c8b76f4f8ac710ff3a88d0e, type: 3}
+  m_Name: SecurityQcEventChannel
   m_EditorClassIdentifier: Main::ImmigrationSim.Main.Traveller.TravellerEventChannel

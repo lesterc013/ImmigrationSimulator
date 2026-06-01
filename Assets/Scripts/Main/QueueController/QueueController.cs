@@ -1,17 +1,18 @@
+using ImmigrationSim.Main.Traveller;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace ImmigrationSim.Main.Traveller
+namespace ImmigrationSim.Main.QueueController
 {
     public class QueueController : MonoBehaviour
     {
         [SerializeField]
         [Tooltip("Drag in previous stageType's TravellerEventChannel - for the first stageType, it is its own one.")]
-        private TravellerEventChannel inflowTravellerEventChannel;
+        private QueueControllerEventChannel inflowTravellerEventChannel;
 
         [SerializeField]
         [Tooltip("Drag in own TravellerEventChannel.")]
-        private TravellerEventChannel ownTravellerEventChannel;
+        private QueueControllerEventChannel ownTravellerEventChannel;
 
         [SerializeField]
         private StageType queueStageType;

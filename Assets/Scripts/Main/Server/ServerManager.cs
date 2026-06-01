@@ -1,6 +1,6 @@
 using ImmigrationSim.Core;
+using ImmigrationSim.Main.QueueController;
 using ImmigrationSim.Main.Server;
-using ImmigrationSim.Main.Traveller;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,7 +13,7 @@ namespace ImmigrationSim.Main
 
         [SerializeField]
         [Tooltip("Drag in the corresponding TravellerEventChannel to stageType.")]
-        private TravellerEventChannel travellerEventChannel;
+        private QueueControllerEventChannel travellerEventChannel;
 
         [SerializeField]
         private GameObject serverPrefab;

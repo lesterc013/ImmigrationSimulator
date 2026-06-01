@@ -1,4 +1,5 @@
 using ImmigrationSim.Core;
+using ImmigrationSim.Main.QueueController;
 using UnityEngine;
 
 namespace ImmigrationSim.Main.Traveller
@@ -6,8 +7,8 @@ namespace ImmigrationSim.Main.Traveller
     public class TravellerSpawner : MonoBehaviour
     {
         [SerializeField]
-        [Tooltip("Drag the first TravellerEventChannel here: Security in this case.")]
-        private TravellerEventChannel travellerEc;
+        [Tooltip("Drag the stage's QueueControllerEventChannel here.")]
+        private QueueControllerEventChannel firstQueueControllerEventChannel;
 
         [SerializeField]
         private SimConfig simConfig;
@@ -40,7 +41,7 @@ namespace ImmigrationSim.Main.Traveller
         {
 
             var newTraveller = new TravellerEntity(GetTravellerType());
-            travellerEc.RaiseNewTravellerArrived(newTraveller);
+            firstQueueControllerEventChannel.RaiseNewTravellerArrived(newTraveller);
 
             // After spawning, reset the countdown timer with a cumulative timing to help with the spawn overshoots.
             timeTillSpawn += GetTimeTillSpawn();

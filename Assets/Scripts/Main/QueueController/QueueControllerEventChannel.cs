@@ -1,10 +1,11 @@
+using ImmigrationSim.Main.Traveller;
 using System;
 using UnityEngine;
 
-namespace ImmigrationSim.Main.Traveller
+namespace ImmigrationSim.Main.QueueController
 {
-    [CreateAssetMenu(fileName = "TravellerEventChannel", menuName = "Scriptable Objects/TravellerEventChannel")]
-    public class TravellerEventChannel : ScriptableObject
+    [CreateAssetMenu(fileName = "QueueControllerEventChannenl", menuName = "Scriptable Objects/QueueControllerEventChannel")]
+    public class QueueControllerEventChannel : ScriptableObject
     {
         public Action<TravellerEntity> OnNewTraveller;
         public void RaiseNewTravellerArrived(TravellerEntity newTraveller)
