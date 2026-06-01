@@ -29,6 +29,9 @@ namespace ImmigrationSim.Setup
         [SerializeField] private TMP_InputField maxImmigrationProcessingTimeCitizenField;
         [SerializeField] private TMP_InputField minImmigrationProcessingTimeForeginerField;
         [SerializeField] private TMP_InputField maxImmigrationProcessingTimeForeginerField;
+        [SerializeField] private TMP_InputField secondaryScreeningProbabilityField;
+        [SerializeField] private TMP_InputField minSecondaryScreeningTimeField;
+        [SerializeField] private TMP_InputField maxSecondaryScreeningTimeField;
 
         private void Awake()
         {
@@ -53,6 +56,9 @@ namespace ImmigrationSim.Setup
             maxImmigrationProcessingTimeCitizenField.text = simConfig.CitizenMaxImmigrationProcessingTime.ToString();
             minImmigrationProcessingTimeForeginerField.text = simConfig.ForeignerMinImmigrationProcessingTime.ToString();
             maxImmigrationProcessingTimeForeginerField.text = simConfig.ForeignerMaxImmigrationProcessingTime.ToString();
+            secondaryScreeningProbabilityField.text = simConfig.SecondaryScreeningProbability.ToString();
+            minSecondaryScreeningTimeField.text = simConfig.MinSecondaryScreeningTime.ToString();
+            maxSecondaryScreeningTimeField.text = simConfig.MaxSecondaryScreeningTime.ToString();
         }
 
         public void StartSim()
@@ -79,6 +85,10 @@ namespace ImmigrationSim.Setup
             float.TryParse(maxImmigrationProcessingTimeCitizenField.text, out float maxImmCitizen);
             float.TryParse(minImmigrationProcessingTimeForeginerField.text, out float minImmForeigner);
             float.TryParse(maxImmigrationProcessingTimeForeginerField.text, out float maxImmForeigner);
+            float.TryParse(secondaryScreeningProbabilityField.text, out float secondaryScreeningProbability);
+            float.TryParse(minSecondaryScreeningTimeField.text, out float minSecondaryScreeningTime);
+            float.TryParse(maxSecondaryScreeningTimeField.text, out float maxSecondaryScreeningTime);
+
 
             simConfig.ApplyConfig(
                 travellersPerSecond: tps,
@@ -94,7 +104,10 @@ namespace ImmigrationSim.Setup
                 maxImmigrationProcessingTimeCitizen: maxImmCitizen,
                 minImmigrationProcessingTimeForeigner: minImmForeigner,
                 maxImmigrationProcessingTimeForeigner: maxImmForeigner,
-                citizenRatio: citizenRatio
+                citizenRatio: citizenRatio,
+                secondaryScreeningProbability,
+                minSecondaryScreeningTime,
+                maxSecondaryScreeningTime
             );
         }
     }

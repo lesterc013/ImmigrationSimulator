@@ -15,6 +15,7 @@ MonoBehaviour:
   <TravellersPerSecond>k__BackingField: 1
   <SimSpeed>k__BackingField: 2
   <SimDuration>k__BackingField: 3600
+  <CitizenRatio>k__BackingField: 75
   <SecurityServerCount>k__BackingField: 10
   <CitizenMinSecurityProcessingTime>k__BackingField: 5
   <CitizenMaxSecurityProcessingTime>k__BackingField: 30
@@ -25,4 +26,6 @@ MonoBehaviour:
   <CitizenMaxImmigrationProcessingTime>k__BackingField: 30
   <ForeignerMinImmigrationProcessingTime>k__BackingField: 30
   <ForeignerMaxImmigrationProcessingTime>k__BackingField: 60
-  <CitizenRatio>k__BackingField: 75
+  <SecondaryScreeningProbability>k__BackingField: 10
+  <MinSecondaryScreeningTime>k__BackingField: 30
+  <MaxSecondaryScreeningTime>k__BackingField: 60
