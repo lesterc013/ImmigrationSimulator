@@ -29,11 +29,6 @@ namespace ImmigrationSim.Main.QueueController
             ownQueueControllerEventChannel.OnServerReadyForNext += HandleServerFreedUp;
         }
 
-        private void Update()
-        {
-            ownQueueControllerEventChannel.RaiseQueueCountUpdated(queue.Count);
-        }
-
         private void HandleNewTraveller(TravellerEntity newTraveller)
         {
             queue.Enqueue(newTraveller);
@@ -57,8 +52,8 @@ namespace ImmigrationSim.Main.QueueController
             {
                 var travellerToAssign = queue.Dequeue();
                 travellerToAssign.RecordServiceStart(queueStageType);
-                ownQueueControllerEventChannel.OnTravellerLeftQueue(travellerToAssign);
-                freeServer.Assign(queue.Dequeue());
+                ownQueueControllerEventChannel.RaiseTravellerLeftQueue(travellerToAssign);
+                freeServer.Assign(travellerToAssign);
             }
         }
 
