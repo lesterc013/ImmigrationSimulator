@@ -19,6 +19,7 @@ namespace ImmigrationSim.Main.Server
         private ServerEventChannel serverEventChannel;
 
         public bool IsAvailable { get; private set; }
+        public float BusyTime { get; private set; }
 
         public void Init(StageType stageType, QueueControllerEventChannel queueControllerEventChannel, ServerEventChannel serverEventChannel)
         {
@@ -37,6 +38,7 @@ namespace ImmigrationSim.Main.Server
             if (remainingTime > 0)
             {
                 remainingTime -= SimClock.Instance.SimDeltaTime;
+                BusyTime += SimClock.Instance.SimDeltaTime;
             }
 
             // Release Traveller and reset internal state.
