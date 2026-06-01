@@ -21,14 +21,5 @@ namespace ImmigrationSim.Main.QueueController
         {
             OnServerReadyForNext?.Invoke();
         }
-
-        /// <summary>
-        /// To handoff traveller downstream.
-        /// </summary>
-        public Action<TravellerEntity> OnTravellerExitingService;
-        public void RaiseTravellerExitingService(TravellerEntity completedTraveller)
-        {
-            OnTravellerExitingService?.Invoke(completedTraveller);
-        }
     }
 }

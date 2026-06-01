@@ -7,12 +7,8 @@ namespace ImmigrationSim.Main.QueueController
     public class QueueController : MonoBehaviour
     {
         [SerializeField]
-        [Tooltip("Drag in previous stageType's TravellerEventChannel - for the first stageType, it is its own one.")]
-        private QueueControllerEventChannel inflowTravellerEventChannel;
-
-        [SerializeField]
-        [Tooltip("Drag in own TravellerEventChannel.")]
-        private QueueControllerEventChannel ownTravellerEventChannel;
+        [Tooltip("Drag in own stageType's QueueControllerEventChannel.")]
+        private QueueControllerEventChannel ownQueueControllerEventChannel;
 
         [SerializeField]
         private StageType queueStageType;
@@ -28,14 +24,10 @@ namespace ImmigrationSim.Main.QueueController
         {
             queue = new Queue<TravellerEntity>();
 
-            inflowTravellerEventChannel.OnNewTraveller += HandleNewTraveller;
-            ownTravellerEventChannel.OnServerReadyForNext += HandleServerFreedUp;
+            ownQueueControllerEventChannel.OnNewTraveller += HandleNewTraveller;
+            ownQueueControllerEventChannel.OnServerReadyForNext += HandleServerFreedUp;
         }
 
-        // NewTraveller received
-        // Subscribe to shared event with TravellerSpawner to receive a new Traveller
-        // Push Traveller into Queue
-        // Call TryAssign
         private void HandleNewTraveller(TravellerEntity newTraveller)
         {
             queue.Enqueue(newTraveller);
@@ -48,11 +40,6 @@ namespace ImmigrationSim.Main.QueueController
             TryAssignTraveller();
         }
 
-        // TryAssign
-        // check if Queue has something
-        // Check if ServerManager has a free Server
-        // If no, then end
-        // If yes, then get that Server and call the Assign
         private void TryAssignTraveller()
         {
             if (queue.Count == 0)
@@ -70,8 +57,8 @@ namespace ImmigrationSim.Main.QueueController
 
         private void OnDestroy()
         {
-            inflowTravellerEventChannel.OnNewTraveller -= HandleNewTraveller;
-            ownTravellerEventChannel.OnServerReadyForNext -= HandleServerFreedUp;
+            ownQueueControllerEventChannel.OnNewTraveller -= HandleNewTraveller;
+            ownQueueControllerEventChannel.OnServerReadyForNext -= HandleServerFreedUp;
         }
     }
 }

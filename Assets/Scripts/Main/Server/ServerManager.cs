@@ -12,8 +12,12 @@ namespace ImmigrationSim.Main
         private StageType stageType;
 
         [SerializeField]
-        [Tooltip("Drag in the corresponding TravellerEventChannel to stageType.")]
-        private QueueControllerEventChannel travellerEventChannel;
+        [Tooltip("Drag in the corresponding QueueControllerEventChannel to stageType.")]
+        private QueueControllerEventChannel queueControllerEventChannel;
+
+        [SerializeField]
+        [Tooltip("Drag in the corresponding ServerEventChannel to stageType.")]
+        private ServerEventChannel serverEventChannel;
 
         [SerializeField]
         private GameObject serverPrefab;
@@ -46,7 +50,7 @@ namespace ImmigrationSim.Main
             {
                 var server = Instantiate(serverPrefab, transform);
                 var serverScript = server.GetComponent<ServerEntity>();
-                serverScript.Init(stageType, travellerEventChannel);
+                serverScript.Init(stageType, queueControllerEventChannel, serverEventChannel);
                 servers.Add(serverScript);
             }
         }

@@ -10,16 +10,20 @@ namespace ImmigrationSim.Main.Server
         private TravellerEntity currentTraveller;
         private float remainingTime;
         private StageType serverStageType;
-        private QueueControllerEventChannel travellerEventChannel;
+        // This event channel is DI-ed by the ServerManager to provide the corresponding StageType's QueueControllerEventChannel so that this Server may notify it when it is freed up.
+        private QueueControllerEventChannel queueControllerEventChannel;
+        // This EC also DI-ed by ServerManager to raise the exiting traveller.
+        private ServerEventChannel serverEventChannel;
 
         public bool IsAvailable { get; private set; }
 
         // DI in the stageType and corresponding TravellerEventChannel
-        public void Init(StageType stageType, QueueControllerEventChannel travellerEventChannel)
+        public void Init(StageType stageType, QueueControllerEventChannel queueControllerEventChannel, ServerEventChannel serverEventChannel)
         {
             serverStageType = stageType;
             IsAvailable = true;
-            this.travellerEventChannel = travellerEventChannel;
+            this.queueControllerEventChannel = queueControllerEventChannel;
+            this.serverEventChannel = serverEventChannel;
         }
 
         private void Update()
@@ -39,9 +43,9 @@ namespace ImmigrationSim.Main.Server
                 Debug.Log("Server freed.");
                 currentTraveller.RecordServiceEnd(serverStageType);
                 // This is to tell its QueueController to call TryAssign().
-                travellerEventChannel.RaiseServerReadyForNext();
+                queueControllerEventChannel.RaiseServerReadyForNext();
                 // This is to flow the Traveller downstream to the next Queue or Sink.
-                travellerEventChannel.RaiseTravellerExitingService(currentTraveller);
+                serverEventChannel.RaiseTravellerExitingService(currentTraveller);
                 FreeServer();
             }
         }

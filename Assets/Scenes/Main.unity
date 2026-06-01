@@ -548,7 +548,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Main::ImmigrationSim.Main.ServerManager
   stageType: 0
-  travellerEventChannel: {fileID: 11400000, guid: 7073d8ee585ac89429200d7825bb58f5, type: 2}
+  queueControllerEventChannel: {fileID: 11400000, guid: 7073d8ee585ac89429200d7825bb58f5, type: 2}
+  serverEventChannel: {fileID: 11400000, guid: 560ab9ee2a8624d4db4992c251552b8e, type: 2}
   serverPrefab: {fileID: 877574034008326445, guid: b4430b109df4ae64fa3e8c72990fc824, type: 3}
   simConfig: {fileID: 11400000, guid: d5da3f784c7c29947a81938639d6ba4d, type: 2}
 --- !u!4 &928977603
@@ -913,8 +914,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f802144468074e40b59fc7ca201115e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Main::ImmigrationSim.Main.Traveller.QueueController
-  inflowTravellerEventChannel: {fileID: 11400000, guid: 7073d8ee585ac89429200d7825bb58f5, type: 2}
-  ownTravellerEventChannel: {fileID: 11400000, guid: 7073d8ee585ac89429200d7825bb58f5, type: 2}
+  ownQueueControllerEventChannel: {fileID: 11400000, guid: 7073d8ee585ac89429200d7825bb58f5, type: 2}
   queueStageType: 0
   serverManager: {fileID: 928977602}
 --- !u!4 &1318977707
@@ -962,7 +962,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Main::ImmigrationSim.Main.ServerManager
   stageType: 0
-  travellerEventChannel: {fileID: 0}
+  queueControllerEventChannel: {fileID: 0}
+  serverEventChannel: {fileID: 0}
   serverPrefab: {fileID: 877574034008326445, guid: b4430b109df4ae64fa3e8c72990fc824, type: 3}
   simConfig: {fileID: 11400000, guid: d5da3f784c7c29947a81938639d6ba4d, type: 2}
 --- !u!4 &1475341870
