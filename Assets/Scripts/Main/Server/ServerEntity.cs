@@ -54,11 +54,9 @@ namespace ImmigrationSim.Main.Server
 
         public void Assign(TravellerEntity traveller)
         {
-            Debug.Log($"{serverStageType} server: New traveller assigned.");
             IsAvailable = false;
             traveller.RecordServiceStart(serverStageType);
-            // TODO: Set remainingTime from the ProcessingTimeGenerator
-            remainingTime = 20f;
+            remainingTime = simConfig.GetProcessingTime(traveller.Type, serverStageType);
             currentTraveller = traveller;
         }
 

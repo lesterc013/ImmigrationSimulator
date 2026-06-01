@@ -55,5 +55,36 @@ namespace ImmigrationSim.Core
             ForeignerMaxImmigrationProcessingTime = maxImmigrationProcessingTimeForeigner;
             CitizenRatio = citizenRatio;
         }
+
+        /// <summary>
+        /// Return a uniformly distributed processing time based on the Citizen/Foreigner and StageType.
+        /// Returned time is based on the input params set before the start of the sim.
+        /// </summary>
+        /// <param name="travellerType"></param>
+        /// <param name="stageType"></param>
+        /// <returns></returns>
+        public float GetProcessingTime(TravellerType travellerType, StageType stageType)
+        {
+            float min, max;
+            if (stageType == StageType.Security)
+            {
+                min = travellerType == TravellerType.Citizen
+                    ? CitizenMinSecurityProcessingTime
+                    : ForeignerMinSecurityProcessingTime;
+                max = travellerType == TravellerType.Citizen
+                    ? CitizenMaxSecurityProcessingTime
+                    : ForeignerMaxSecurityProcessingTime;
+            }
+            else
+            {
+                min = travellerType == TravellerType.Citizen
+                    ? CitizenMinImmigrationProcessingTime
+                    : ForeignerMinImmigrationProcessingTime;
+                max = travellerType == TravellerType.Citizen
+                    ? CitizenMaxImmigrationProcessingTime
+                    : ForeignerMaxImmigrationProcessingTime;
+            }
+            return Random.Range(min, max);
+        }
     }
 }

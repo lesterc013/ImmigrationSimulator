@@ -44,3 +44,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 366aafb947bed3543a7b76ae2dc78e4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Main::ImmigrationSim.Main.Server.ServerEntity
+  simConfig: {fileID: 11400000, guid: d5da3f784c7c29947a81938639d6ba4d, type: 2}
