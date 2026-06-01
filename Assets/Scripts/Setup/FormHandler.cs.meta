@@ -1,2 +1,26 @@
 fileFormatVersion: 2
 guid: 9eaadd74a582c274691eb46a65830e97
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - simConfig: {fileID: 11400000, guid: d5da3f784c7c29947a81938639d6ba4d, type: 2}
+  - travellersPerSecondField: {instanceID: 0}
+  - simSpeedField: {instanceID: 0}
+  - simDurationField: {instanceID: 0}
+  - citizenRatioField: {instanceID: 0}
+  - securityServerCountField: {instanceID: 0}
+  - minSecurityProcessingTimeCitizenField: {instanceID: 0}
+  - maxSecurityProcessingTimeCitizenField: {instanceID: 0}
+  - minSecurityProcessingTimeForeginerField: {instanceID: 0}
+  - maxSecurityProcessingTimeForeginerField: {instanceID: 0}
+  - immigrationServerCountField: {instanceID: 0}
+  - minImmigrationProcessingTimeCitizenField: {instanceID: 0}
+  - maxImmigrationProcessingTimeCitizenField: {instanceID: 0}
+  - minImmigrationProcessingTimeForeginerField: {instanceID: 0}
+  - maxImmigrationProcessingTimeForeginerField: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

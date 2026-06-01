@@ -1,3 +1,4 @@
+using ImmigrationSim.Core;
 using ImmigrationSim.Main.QueueController;
 using ImmigrationSim.Main.Traveller;
 using UnityEngine;
@@ -6,7 +7,9 @@ namespace ImmigrationSim.Main.Server
 {
     public class ServerEntity : MonoBehaviour, IServer
     {
-        //Fields it needs:
+        [SerializeField]
+        private SimConfig simConfig; // To get the processing time of a Traveller.
+
         private TravellerEntity currentTraveller;
         private float remainingTime;
         private StageType serverStageType;
@@ -17,7 +20,6 @@ namespace ImmigrationSim.Main.Server
 
         public bool IsAvailable { get; private set; }
 
-        // DI in the stageType and corresponding TravellerEventChannel
         public void Init(StageType stageType, QueueControllerEventChannel queueControllerEventChannel, ServerEventChannel serverEventChannel)
         {
             serverStageType = stageType;

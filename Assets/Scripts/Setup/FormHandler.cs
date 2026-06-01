@@ -10,13 +10,25 @@ namespace ImmigrationSim.Setup
         [SerializeField]
         private SimConfig simConfig;
 
-        [Header("Input Fields")]
+        [Header("General")]
         [SerializeField] private TMP_InputField travellersPerSecondField;
         [SerializeField] private TMP_InputField simSpeedField;
         [SerializeField] private TMP_InputField simDurationField;
-        [SerializeField] private TMP_InputField securityServerCountField;
-        [SerializeField] private TMP_InputField immigrationServerCountField;
         [SerializeField] private TMP_InputField citizenRatioField;
+
+        [Header("Security")]
+        [SerializeField] private TMP_InputField securityServerCountField;
+        [SerializeField] private TMP_InputField minSecurityProcessingTimeCitizenField;
+        [SerializeField] private TMP_InputField maxSecurityProcessingTimeCitizenField;
+        [SerializeField] private TMP_InputField minSecurityProcessingTimeForeginerField;
+        [SerializeField] private TMP_InputField maxSecurityProcessingTimeForeginerField;
+
+        [Header("Immigration")]
+        [SerializeField] private TMP_InputField immigrationServerCountField;
+        [SerializeField] private TMP_InputField minImmigrationProcessingTimeCitizenField;
+        [SerializeField] private TMP_InputField maxImmigrationProcessingTimeCitizenField;
+        [SerializeField] private TMP_InputField minImmigrationProcessingTimeForeginerField;
+        [SerializeField] private TMP_InputField maxImmigrationProcessingTimeForeginerField;
 
         private void Awake()
         {
@@ -28,9 +40,19 @@ namespace ImmigrationSim.Setup
             travellersPerSecondField.text = simConfig.TravellersPerSecond.ToString();
             simSpeedField.text = simConfig.SimSpeed.ToString();
             simDurationField.text = simConfig.SimDuration.ToString();
-            securityServerCountField.text = simConfig.SecurityServerCount.ToString();
-            immigrationServerCountField.text = simConfig.ImmigrationServerCount.ToString();
             citizenRatioField.text = simConfig.CitizenRatio.ToString();
+
+            securityServerCountField.text = simConfig.SecurityServerCount.ToString();
+            minSecurityProcessingTimeCitizenField.text = simConfig.CitizenMinSecurityProcessingTime.ToString();
+            maxSecurityProcessingTimeCitizenField.text = simConfig.CitizenMaxSecurityProcessingTime.ToString();
+            minSecurityProcessingTimeForeginerField.text = simConfig.ForeignerMinSecurityProcessingTime.ToString();
+            maxSecurityProcessingTimeForeginerField.text = simConfig.ForeignerMaxSecurityProcessingTime.ToString();
+
+            immigrationServerCountField.text = simConfig.ImmigrationServerCount.ToString();
+            minImmigrationProcessingTimeCitizenField.text = simConfig.CitizenMinImmigrationProcessingTime.ToString();
+            maxImmigrationProcessingTimeCitizenField.text = simConfig.CitizenMaxImmigrationProcessingTime.ToString();
+            minImmigrationProcessingTimeForeginerField.text = simConfig.ForeignerMinImmigrationProcessingTime.ToString();
+            maxImmigrationProcessingTimeForeginerField.text = simConfig.ForeignerMaxImmigrationProcessingTime.ToString();
         }
 
         public void StartSim()
@@ -41,12 +63,39 @@ namespace ImmigrationSim.Setup
 
         private void WriteToConfig()
         {
-            float.TryParse(travellersPerSecondField.text, out simConfig.TravellersPerSecond);
-            float.TryParse(simSpeedField.text, out simConfig.SimSpeed);
-            float.TryParse(simDurationField.text, out simConfig.SimDuration);
-            int.TryParse(securityServerCountField.text, out simConfig.SecurityServerCount);
-            int.TryParse(immigrationServerCountField.text, out simConfig.ImmigrationServerCount);
-            float.TryParse(citizenRatioField.text, out simConfig.CitizenRatio);
+            float.TryParse(travellersPerSecondField.text, out float tps);
+            float.TryParse(simSpeedField.text, out float simSpeed);
+            float.TryParse(simDurationField.text, out float simDuration);
+            float.TryParse(citizenRatioField.text, out float citizenRatio);
+
+            int.TryParse(securityServerCountField.text, out int securityCount);
+            float.TryParse(minSecurityProcessingTimeCitizenField.text, out float minSecCitizen);
+            float.TryParse(maxSecurityProcessingTimeCitizenField.text, out float maxSecCitizen);
+            float.TryParse(minSecurityProcessingTimeForeginerField.text, out float minSecForeigner);
+            float.TryParse(maxSecurityProcessingTimeForeginerField.text, out float maxSecForeigner);
+
+            int.TryParse(immigrationServerCountField.text, out int immigrationCount);
+            float.TryParse(minImmigrationProcessingTimeCitizenField.text, out float minImmCitizen);
+            float.TryParse(maxImmigrationProcessingTimeCitizenField.text, out float maxImmCitizen);
+            float.TryParse(minImmigrationProcessingTimeForeginerField.text, out float minImmForeigner);
+            float.TryParse(maxImmigrationProcessingTimeForeginerField.text, out float maxImmForeigner);
+
+            simConfig.ApplyConfig(
+                travellersPerSecond: tps,
+                simSpeed: simSpeed,
+                simDuration: simDuration,
+                securityServerCount: securityCount,
+                minSecurityProcessingTimeCitizen: minSecCitizen,
+                maxSecurityProcessingTimeCitizen: maxSecCitizen,
+                minSecurityProcessingTimeForeigner: minSecForeigner,
+                maxSecurityProcessingTimeForeigner: maxSecForeigner,
+                immigrationServerCount: immigrationCount,
+                minImmigrationProcessingTimeCitizen: minImmCitizen,
+                maxImmigrationProcessingTimeCitizen: maxImmCitizen,
+                minImmigrationProcessingTimeForeigner: minImmForeigner,
+                maxImmigrationProcessingTimeForeigner: maxImmForeigner,
+                citizenRatio: citizenRatio
+            );
         }
     }
 }

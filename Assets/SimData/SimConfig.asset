@@ -12,9 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0eb973459f158c240b77117753345d01, type: 3}
   m_Name: SimConfig
   m_EditorClassIdentifier: Assembly-CSharp::ImmigrationSim.SimConfig
-  TravellersPerSecond: 1
-  SimSpeed: 2
-  SimDuration: 3600
-  SecurityServerCount: 10
-  ImmigrationServerCount: 3
-  CitizenRatio: 60
+  <TravellersPerSecond>k__BackingField: 1
+  <SimSpeed>k__BackingField: 2
+  <SimDuration>k__BackingField: 3600
+  <SecurityServerCount>k__BackingField: 10
+  <CitizenMinSecurityProcessingTime>k__BackingField: 5
+  <CitizenMaxSecurityProcessingTime>k__BackingField: 30
+  <ForeignerMinSecurityProcessingTime>k__BackingField: 30
+  <ForeignerMaxSecurityProcessingTime>k__BackingField: 60
+  <ImmigrationServerCount>k__BackingField: 6
+  <CitizenMinImmigrationProcessingTime>k__BackingField: 5
+  <CitizenMaxImmigrationProcessingTime>k__BackingField: 30
+  <ForeignerMinImmigrationProcessingTime>k__BackingField: 30
+  <ForeignerMaxImmigrationProcessingTime>k__BackingField: 60
+  <CitizenRatio>k__BackingField: 75
