@@ -11,6 +11,8 @@ namespace ImmigrationSim.Main
         [SerializeField]
         private SimConfig simConfig;
 
+        private float simDuration;
+        private bool continueRunning;
         private float simSpeed;
 
         /// <summary>
@@ -18,7 +20,15 @@ namespace ImmigrationSim.Main
         /// </summary>
         public float SimDeltaTime
         {
-            get { return Time.deltaTime * simSpeed; }
+            get 
+            { 
+                if (!continueRunning)
+                {
+                    return 0;
+                }
+
+                return Time.deltaTime * simSpeed; 
+            }
         }
 
         public float TotalSimTimeElapsed
@@ -35,13 +45,25 @@ namespace ImmigrationSim.Main
             else
             {
                 _instance = this;
+                simDuration = simConfig.SimDuration;
+                continueRunning = true;
                 simSpeed = simConfig.SimSpeed;
             }
         }
 
         private void Update()
         {
+            if (!continueRunning) 
+            { 
+                return; 
+            }
+
             TotalSimTimeElapsed += SimDeltaTime;
+
+            if (TotalSimTimeElapsed >= simDuration)
+            {
+                continueRunning = false;
+            }
         }
     }
 }
