@@ -9,10 +9,10 @@ namespace ImmigrationSim.Main
     public class ServerManager : MonoBehaviour
     {
         [SerializeField]
-        private StageType checkType;
+        private StageType stageType;
 
         [SerializeField]
-        [Tooltip("Drag in the corresponding TravellerEventChannel to checkType.")]
+        [Tooltip("Drag in the corresponding TravellerEventChannel to stageType.")]
         private TravellerEventChannel travellerEventChannel;
 
         [SerializeField]
@@ -26,17 +26,17 @@ namespace ImmigrationSim.Main
 
         private void Awake()
         {
-            if (checkType == StageType.Security)
+            if (stageType == StageType.Security)
             {
                 numberOfServers = simConfig.SecurityServerCount;
             }
-            else if (checkType == StageType.Immigration)
+            else if (stageType == StageType.Immigration)
             {
                 numberOfServers = simConfig.ImmigrationServerCount;
             }
             else
             {
-                Debug.LogError($"ServerManager: unhandled CheckType {checkType}");
+                Debug.LogError($"ServerManager: unhandled StageType {stageType}");
                 numberOfServers = 1;
             }
 
@@ -46,7 +46,7 @@ namespace ImmigrationSim.Main
             {
                 var server = Instantiate(serverPrefab, transform);
                 var serverScript = server.GetComponent<ServerEntity>();
-                serverScript.Init(checkType, travellerEventChannel);
+                serverScript.Init(stageType, travellerEventChannel);
                 servers.Add(serverScript);
             }
         }

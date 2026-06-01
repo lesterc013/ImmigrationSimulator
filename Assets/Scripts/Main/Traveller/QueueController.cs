@@ -6,7 +6,7 @@ namespace ImmigrationSim.Main.Traveller
     public class QueueController : MonoBehaviour
     {
         [SerializeField]
-        [Tooltip("Drag in previous checkType's TravellerEventChannel - for the first checkType, it is its own one.")]
+        [Tooltip("Drag in previous stageType's TravellerEventChannel - for the first stageType, it is its own one.")]
         private TravellerEventChannel inflowTravellerEventChannel;
 
         [SerializeField]
@@ -14,10 +14,10 @@ namespace ImmigrationSim.Main.Traveller
         private TravellerEventChannel ownTravellerEventChannel;
 
         [SerializeField]
-        private StageType queueCheckType;
+        private StageType queueStageType;
 
         [SerializeField]
-        [Tooltip("Drag in the corresponding server manager based on this check type.")]
+        [Tooltip("Drag in the corresponding server manager based on this stage type.")]
         // Note: The reason this is a direct reference instead of an Event is because we need the correct ServerManager to respond to the "is there free server?" query.
         private ServerManager serverManager;
 
@@ -38,7 +38,7 @@ namespace ImmigrationSim.Main.Traveller
         private void HandleNewTraveller(TravellerEntity newTraveller)
         {
             queue.Enqueue(newTraveller);
-            newTraveller.RecordQueueJoin(queueCheckType);
+            newTraveller.RecordQueueJoin(queueStageType);
             TryAssignTraveller();
         }
 
