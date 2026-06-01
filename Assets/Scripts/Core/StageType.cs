@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace ImmigrationSim.Main
+namespace ImmigrationSim.Core
 {
     public enum StageType
     {

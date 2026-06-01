@@ -1,3 +1,4 @@
+using ImmigrationSim.Core;
 using System.Collections.Generic;
 using UnityEngine;
 
