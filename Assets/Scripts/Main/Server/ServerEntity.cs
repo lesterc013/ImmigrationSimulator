@@ -55,7 +55,6 @@ namespace ImmigrationSim.Main.Server
         public void Assign(TravellerEntity traveller)
         {
             IsAvailable = false;
-            traveller.RecordServiceStart(serverStageType);
             remainingTime = simConfig.GetProcessingTime(traveller.Type, serverStageType);
 
             if (serverStageType == StageType.Immigration && Random.Range(0f, 100f) <= simConfig.SecondaryScreeningProbability)

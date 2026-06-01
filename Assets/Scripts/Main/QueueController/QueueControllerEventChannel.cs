@@ -13,6 +13,18 @@ namespace ImmigrationSim.Main.QueueController
             OnNewTraveller?.Invoke(newTraveller);
         }
 
+        public Action<TravellerEntity> OnTravellerLeftQueue;
+        public void RaiseTravellerLeftQueue(TravellerEntity traveller)
+        {
+            OnTravellerLeftQueue?.Invoke(traveller);
+        }
+
+        public Action<int> OnQueueCountUpdated;
+        public void RaiseQueueCountUpdated(int queueCount)
+        {
+            OnQueueCountUpdated?.Invoke(queueCount);
+        }
+
         /// <summary>
         /// To announce a Server is freed up.
         /// </summary>
