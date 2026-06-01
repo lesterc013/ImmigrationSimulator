@@ -11,7 +11,7 @@ namespace ImmigrationSim.Main.Traveller
         /// <summary>
         /// Holds all the important timings for a certain check stage e.g. Security - QueueJoinTime, ServerStartTime, ServerEndTime
         /// </summary>
-        public Dictionary<CheckType, CheckTimings> Timings { get; private set; }
+        public Dictionary<CheckType, StageTimings> Timings { get; private set; }
         public TravellerType Type { get; private set; }
 
         public TravellerEntity(TravellerType travellerType)
@@ -19,7 +19,7 @@ namespace ImmigrationSim.Main.Traveller
             Id = nextId;
             nextId++;
             SpawnTime = SimClock.Instance.TotalSimTimeElapsed;
-            Timings = new Dictionary<CheckType, CheckTimings>();
+            Timings = new Dictionary<CheckType, StageTimings>();
             Type = travellerType;
         }
 
@@ -45,7 +45,7 @@ namespace ImmigrationSim.Main.Traveller
         {
             if (!Timings.ContainsKey(check))
             {
-                Timings[check] = new CheckTimings();
+                Timings[check] = new StageTimings();
             }
         }
 
