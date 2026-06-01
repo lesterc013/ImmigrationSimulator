@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace ImmigrationSim.Setup
+namespace ImmigrationSim.StartMenu
 {
     public class FormHandler : MonoBehaviour
     {

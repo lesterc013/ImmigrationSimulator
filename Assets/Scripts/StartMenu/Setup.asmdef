@@ -1,6 +1,6 @@
 {
-    "name": "Setup",
-    "rootNamespace": "",
+    "name": "StartMenu",
+    "rootNamespace": "ImmigrationSim.StartMenu",
     "references": [
         "GUID:6055be8ebefd69e48b49212b09b47b2f",
         "GUID:70b26df22c2a8c64f99f037a16be8b33"
