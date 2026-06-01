@@ -40,7 +40,7 @@ namespace ImmigrationSim.Main.Server
             // Release Traveller and reset internal state.
             if (remainingTime <= 0)
             {
-                Debug.Log("Server freed.");
+                Debug.Log($"{serverStageType} Server freed.");
                 currentTraveller.RecordServiceEnd(serverStageType);
                 // This is to tell its QueueController to call TryAssign().
                 queueControllerEventChannel.RaiseServerReadyForNext();
@@ -52,7 +52,7 @@ namespace ImmigrationSim.Main.Server
 
         public void Assign(TravellerEntity traveller)
         {
-            Debug.Log("New traveller assigned.");
+            Debug.Log($"{serverStageType} server: New traveller assigned.");
             IsAvailable = false;
             traveller.RecordServiceStart(serverStageType);
             // TODO: Set remainingTime from the ProcessingTimeGenerator

@@ -47,7 +47,7 @@ namespace ImmigrationSim.Main.QueueController
                 return;
             }
 
-            Debug.Log($"Queue length now: {queue.Count}");
+            Debug.Log($"Queue length at stage {queueStageType} now: {queue.Count}");
 
             if (serverManager.FindFreeServer(out IServer freeServer))
             {
