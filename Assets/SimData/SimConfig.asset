@@ -26,6 +26,6 @@ MonoBehaviour:
   <CitizenMaxImmigrationProcessingTime>k__BackingField: 30
   <ForeignerMinImmigrationProcessingTime>k__BackingField: 30
   <ForeignerMaxImmigrationProcessingTime>k__BackingField: 60
-  <SecondaryScreeningProbability>k__BackingField: 10
+  <SecondaryScreeningProbability>k__BackingField: 30
   <MinSecondaryScreeningTime>k__BackingField: 30
   <MaxSecondaryScreeningTime>k__BackingField: 60
