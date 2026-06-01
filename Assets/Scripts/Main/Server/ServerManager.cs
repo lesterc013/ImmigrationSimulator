@@ -69,5 +69,15 @@ namespace ImmigrationSim.Main
             freeServer = null;
             return false;
         }
+
+        public float GetTotalServersBusyTime()
+        {
+            float totalBusyTime = 0;
+            foreach (var serverEntity in servers)
+            {
+                totalBusyTime += serverEntity.BusyTime;
+            }
+            return totalBusyTime;
+        }
     }
 }
