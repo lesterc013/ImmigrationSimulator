@@ -9,7 +9,7 @@ namespace ImmigrationSim.Main
     public class ServerManager : MonoBehaviour
     {
         [SerializeField]
-        private CheckType checkType;
+        private StageType checkType;
 
         [SerializeField]
         [Tooltip("Drag in the corresponding TravellerEventChannel to checkType.")]
@@ -26,11 +26,11 @@ namespace ImmigrationSim.Main
 
         private void Awake()
         {
-            if (checkType == CheckType.Security)
+            if (checkType == StageType.Security)
             {
                 numberOfServers = simConfig.SecurityServerCount;
             }
-            else if (checkType == CheckType.Immigration)
+            else if (checkType == StageType.Immigration)
             {
                 numberOfServers = simConfig.ImmigrationServerCount;
             }

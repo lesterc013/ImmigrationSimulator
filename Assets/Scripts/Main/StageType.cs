@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace ImmigrationSim.Main
 {
-    public enum CheckType
+    public enum StageType
     {
         Security,
         Immigration

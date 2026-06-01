@@ -8,13 +8,13 @@ namespace ImmigrationSim.Main.Server
         //Fields it needs:
         private TravellerEntity currentTraveller;
         private float remainingTime;
-        private CheckType serverCheckType;
+        private StageType serverCheckType;
         private TravellerEventChannel travellerEventChannel;
 
         public bool IsAvailable { get; private set; }
 
         // DI in the checkType and corresponding TravellerEventChannel
-        public void Init(CheckType checkType, TravellerEventChannel travellerEventChannel)
+        public void Init(StageType checkType, TravellerEventChannel travellerEventChannel)
         {
             serverCheckType = checkType;
             IsAvailable = true;

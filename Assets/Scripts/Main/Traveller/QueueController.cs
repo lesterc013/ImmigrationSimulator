@@ -14,7 +14,7 @@ namespace ImmigrationSim.Main.Traveller
         private TravellerEventChannel ownTravellerEventChannel;
 
         [SerializeField]
-        private CheckType queueCheckType;
+        private StageType queueCheckType;
 
         [SerializeField]
         [Tooltip("Drag in the corresponding server manager based on this check type.")]
