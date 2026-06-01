@@ -9,6 +9,7 @@ namespace ImmigrationSim.Core
         [field: SerializeField] public float SimSpeed { get; private set; }
         [field: SerializeField] public float SimDuration { get; private set; }
         [field: SerializeField] public float CitizenRatio { get; private set; }
+        [field: SerializeField] public float WaitThreshold { get; private set; }
 
         [field: Header("Security")]
         [field: SerializeField] public int SecurityServerCount { get; private set; }
@@ -43,6 +44,7 @@ namespace ImmigrationSim.Core
             float minImmigrationProcessingTimeForeigner,
             float maxImmigrationProcessingTimeForeigner,
             float citizenRatio,
+            float waitThreshold,
             float secondaryScreeningProbability,
             float minSecondaryScreeningTime,
             float maxSecondaryScreeningTime)
@@ -50,17 +52,20 @@ namespace ImmigrationSim.Core
             TravellersPerSecond = travellersPerSecond;
             SimSpeed = simSpeed;
             SimDuration = simDuration;
+            CitizenRatio = citizenRatio;
+            WaitThreshold = waitThreshold;
+
             SecurityServerCount = securityServerCount;
             CitizenMinSecurityProcessingTime = minSecurityProcessingTimeCitizen;
             CitizenMaxSecurityProcessingTime = maxSecurityProcessingTimeCitizen;
             ForeignerMinSecurityProcessingTime = minSecurityProcessingTimeForeigner;
             ForeignerMaxSecurityProcessingTime = maxSecurityProcessingTimeForeigner;
+
             ImmigrationServerCount = immigrationServerCount;
             CitizenMinImmigrationProcessingTime = minImmigrationProcessingTimeCitizen;
             CitizenMaxImmigrationProcessingTime = maxImmigrationProcessingTimeCitizen;
             ForeignerMinImmigrationProcessingTime = minImmigrationProcessingTimeForeigner;
             ForeignerMaxImmigrationProcessingTime = maxImmigrationProcessingTimeForeigner;
-            CitizenRatio = citizenRatio;
             SecondaryScreeningProbability = secondaryScreeningProbability;
             MinSecondaryScreeningTime = minSecondaryScreeningTime;
             MaxSecondaryScreeningTime = maxSecondaryScreeningTime;

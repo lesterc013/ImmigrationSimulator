@@ -15,6 +15,7 @@ namespace ImmigrationSim.StartMenu
         [SerializeField] private TMP_InputField simSpeedField;
         [SerializeField] private TMP_InputField simDurationField;
         [SerializeField] private TMP_InputField citizenRatioField;
+        [SerializeField] private TMP_InputField waitThresholdField;
 
         [Header("Security")]
         [SerializeField] private TMP_InputField securityServerCountField;
@@ -44,6 +45,7 @@ namespace ImmigrationSim.StartMenu
             simSpeedField.text = simConfig.SimSpeed.ToString();
             simDurationField.text = simConfig.SimDuration.ToString();
             citizenRatioField.text = simConfig.CitizenRatio.ToString();
+            waitThresholdField.text = simConfig.WaitThreshold.ToString();
 
             securityServerCountField.text = simConfig.SecurityServerCount.ToString();
             minSecurityProcessingTimeCitizenField.text = simConfig.CitizenMinSecurityProcessingTime.ToString();
@@ -73,6 +75,7 @@ namespace ImmigrationSim.StartMenu
             float.TryParse(simSpeedField.text, out float simSpeed);
             float.TryParse(simDurationField.text, out float simDuration);
             float.TryParse(citizenRatioField.text, out float citizenRatio);
+            float.TryParse(waitThresholdField.text, out float waitThreshold);
 
             int.TryParse(securityServerCountField.text, out int securityCount);
             float.TryParse(minSecurityProcessingTimeCitizenField.text, out float minSecCitizen);
@@ -105,9 +108,10 @@ namespace ImmigrationSim.StartMenu
                 minImmigrationProcessingTimeForeigner: minImmForeigner,
                 maxImmigrationProcessingTimeForeigner: maxImmForeigner,
                 citizenRatio: citizenRatio,
-                secondaryScreeningProbability,
-                minSecondaryScreeningTime,
-                maxSecondaryScreeningTime
+                waitThreshold: waitThreshold,
+                secondaryScreeningProbability: secondaryScreeningProbability,
+                minSecondaryScreeningTime: minSecondaryScreeningTime,
+                maxSecondaryScreeningTime: maxSecondaryScreeningTime
             );
         }
     }
