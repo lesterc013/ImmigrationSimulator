@@ -7,12 +7,12 @@ namespace ImmigrationSim.Main
     {
         private static SimClock _instance;
         public static SimClock Instance { get { return _instance; } }
+        public bool IsFinished { get; private set; }
 
         [SerializeField]
         private SimConfig simConfig;
 
         private float simDuration;
-        private bool continueRunning;
         private float simSpeed;
 
         /// <summary>
@@ -22,7 +22,7 @@ namespace ImmigrationSim.Main
         {
             get 
             { 
-                if (!continueRunning)
+                if (IsFinished)
                 {
                     return 0;
                 }
@@ -46,14 +46,14 @@ namespace ImmigrationSim.Main
             {
                 _instance = this;
                 simDuration = simConfig.SimDuration;
-                continueRunning = true;
+                IsFinished = false;
                 simSpeed = simConfig.SimSpeed;
             }
         }
 
         private void Update()
         {
-            if (!continueRunning) 
+            if (IsFinished) 
             { 
                 return; 
             }
@@ -62,7 +62,7 @@ namespace ImmigrationSim.Main
 
             if (TotalSimTimeElapsed >= simDuration)
             {
-                continueRunning = false;
+                IsFinished = true;
             }
         }
     }
