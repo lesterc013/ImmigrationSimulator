@@ -16,24 +16,24 @@ namespace ImmigrationSim.Main.Views
 
         [Header("Security")]
         [SerializeField] private TMP_Text securityAvgWaitTimeText;
-        [SerializeField] private TMP_Text securityServerUtilRate;
+        [SerializeField] private TMP_Text securityServerAvgUtilRate;
 
         [Header("Immigration")]
         [SerializeField] private TMP_Text immigrationAvgWaitTimeText;
-        [SerializeField] private TMP_Text immigrationServerUtilRate;
+        [SerializeField] private TMP_Text immigrationServerAvgUtilRate;
 
         private void Update()
         {
             totalCompletedText.text = analyticsEngine.TotalTravellersCompleted.ToString();
-            avgTimeInSystemText.text = analyticsEngine.AvgTotalTimeInSystem.ToString();
-            throughputText.text = analyticsEngine.Throughput.ToString();
-            percentAboveWaitThresholdText.text = analyticsEngine.PercentageAboveWaitThreshold.ToString();
+            avgTimeInSystemText.text = analyticsEngine.AvgTotalTimeInSystem.ToString("F2");
+            throughputText.text = analyticsEngine.Throughput.ToString("F2");
+            percentAboveWaitThresholdText.text = analyticsEngine.PercentageAboveWaitThreshold.ToString("F2");
 
-            securityAvgWaitTimeText.text = analyticsEngine.SecurityAvgWaitTime.ToString();
-            securityServerUtilRate.text = analyticsEngine.SecurityServerUtilisationRate.ToString();
+            securityAvgWaitTimeText.text = analyticsEngine.SecurityAvgWaitTime.ToString("F2");
+            securityServerAvgUtilRate.text = analyticsEngine.SecurityServerAvgUtilisationRate.ToString("F2");
 
-            immigrationAvgWaitTimeText.text = analyticsEngine.ImmigrationAvgWaitTime.ToString();
-            immigrationServerUtilRate.text = analyticsEngine.ImmigrationServerUtilisationRate.ToString();
+            immigrationAvgWaitTimeText.text = analyticsEngine.ImmigrationAvgWaitTime.ToString("F2");
+            immigrationServerAvgUtilRate.text = analyticsEngine.ImmigrationServerAvgUtilisationRate.ToString("F2");
         }
     }
 }
