@@ -31,7 +31,7 @@ namespace ImmigrationSim.Main.Analytics
         // Global metrics
         public int TotalTravellersCompleted { get; private set; }
         public float AvgTotalTimeInSystem { get; private set; }
-        public float TravellersClearedPerMinute { get; private set; }
+        public float Throughput { get; private set; }
         public float PercentageAboveWaitThreshold { get; private set; }
 
         private float totalTimeInSystem;
@@ -53,7 +53,7 @@ namespace ImmigrationSim.Main.Analytics
             ImmigrationServerUtilisationRate = CalculateServerUtilisationRate(immigrationServerManager.GetTotalServersBusyTime());
             if (TotalTravellersCompleted > 0)
             {
-                TravellersClearedPerMinute = TotalTravellersCompleted / (SimClock.Instance.TotalSimTimeElapsed / 60f);
+                Throughput = TotalTravellersCompleted / (SimClock.Instance.TotalSimTimeElapsed / 60f);
             }
         }
 
@@ -121,7 +121,7 @@ namespace ImmigrationSim.Main.Analytics
             }
             PercentageAboveWaitThreshold = (float)travellersAboveThreshold / TotalTravellersCompleted * 100f;
 
-            Debug.Log($"[Analytics] Traveller {traveller.Id} completed | TimeInSystem: {timeInSystem:F2}s | TotalWaitTime: {totalWaitTime:F2}s | AboveThreshold: {totalWaitTime > simConfig.WaitThreshold} | % Above: {PercentageAboveWaitThreshold:F1}% | Throughput: {TravellersClearedPerMinute:F2}/min");
+            Debug.Log($"[Analytics] Traveller {traveller.Id} completed | TimeInSystem: {timeInSystem:F2}s | TotalWaitTime: {totalWaitTime:F2}s | AboveThreshold: {totalWaitTime > simConfig.WaitThreshold} | % Above: {PercentageAboveWaitThreshold:F1}% | Throughput: {Throughput:F2}/min");
         }
 
         private void OnDestroy()
