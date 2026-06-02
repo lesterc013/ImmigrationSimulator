@@ -13,16 +13,16 @@ MonoBehaviour:
   m_Name: SimConfig
   m_EditorClassIdentifier: Assembly-CSharp::ImmigrationSim.SimConfig
   <TravellersPerSecond>k__BackingField: 1
-  <SimSpeed>k__BackingField: 2
+  <SimSpeed>k__BackingField: 10
   <SimDuration>k__BackingField: 60
   <CitizenRatio>k__BackingField: 75
   <WaitThreshold>k__BackingField: 180
-  <SecurityServerCount>k__BackingField: 100
+  <SecurityServerCount>k__BackingField: 30
   <CitizenMinSecurityProcessingTime>k__BackingField: 5
   <CitizenMaxSecurityProcessingTime>k__BackingField: 30
   <ForeignerMinSecurityProcessingTime>k__BackingField: 30
   <ForeignerMaxSecurityProcessingTime>k__BackingField: 60
-  <ImmigrationServerCount>k__BackingField: 100
+  <ImmigrationServerCount>k__BackingField: 30
   <CitizenMinImmigrationProcessingTime>k__BackingField: 5
   <CitizenMaxImmigrationProcessingTime>k__BackingField: 30
   <ForeignerMinImmigrationProcessingTime>k__BackingField: 30

@@ -10,9 +10,23 @@ namespace ImmigrationSim.Main.Views
 
         [SerializeField] private TMP_Text simTimeLeftText;
         [SerializeField] private TMP_Text realTimeLeftText;
+        [SerializeField] private TMP_Text simCompletedText;
+
+        private void Start()
+        {
+            simCompletedText.gameObject.SetActive(false);
+        }
 
         private void Update()
         {
+            if (SimClock.Instance.IsFinished)
+            {
+                simCompletedText.gameObject.SetActive(true);
+                simTimeLeftText.text = "0";
+                realTimeLeftText.text = "0";
+                return;
+            }
+
             float simTimeLeft = simConfig.SimDuration - SimClock.Instance.TotalSimTimeElapsed < 0 ? 0 : simConfig.SimDuration - SimClock.Instance.TotalSimTimeElapsed;
             float realTimeLeft = simTimeLeft / simConfig.SimSpeed;
 
