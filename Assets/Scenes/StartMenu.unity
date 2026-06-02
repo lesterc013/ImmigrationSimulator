@@ -512,7 +512,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2932740343025292446, guid: 34a9be414db7eb54ba3e6799e0f06cfd, type: 3}
       propertyPath: m_text
-      value: No. Servers (max 10)
+      value: No. Servers
       objectReference: {fileID: 0}
     - target: {fileID: 4249951855164500258, guid: 34a9be414db7eb54ba3e6799e0f06cfd, type: 3}
       propertyPath: m_ChildAlignment
@@ -1167,7 +1167,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2932740343025292446, guid: 34a9be414db7eb54ba3e6799e0f06cfd, type: 3}
       propertyPath: m_text
-      value: Foreigner Max. Process Time (max. 60s?)
+      value: Foreigner Max. Process Time
       objectReference: {fileID: 0}
     - target: {fileID: 4249951855164500258, guid: 34a9be414db7eb54ba3e6799e0f06cfd, type: 3}
       propertyPath: m_ChildAlignment
@@ -1903,7 +1903,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2932740343025292446, guid: 34a9be414db7eb54ba3e6799e0f06cfd, type: 3}
       propertyPath: m_text
-      value: Citizen Max. Process Time (max. 60s?)
+      value: Citizen Max. Process Time
       objectReference: {fileID: 0}
     - target: {fileID: 4249951855164500258, guid: 34a9be414db7eb54ba3e6799e0f06cfd, type: 3}
       propertyPath: m_ChildAlignment
@@ -2206,7 +2206,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2932740343025292446, guid: 34a9be414db7eb54ba3e6799e0f06cfd, type: 3}
       propertyPath: m_text
-      value: Citizen Max. Process Time (max. 60s?)
+      value: Citizen Max. Process Time
       objectReference: {fileID: 0}
     - target: {fileID: 4249951855164500258, guid: 34a9be414db7eb54ba3e6799e0f06cfd, type: 3}
       propertyPath: m_ChildAlignment
@@ -3691,7 +3691,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2932740343025292446, guid: 34a9be414db7eb54ba3e6799e0f06cfd, type: 3}
       propertyPath: m_text
-      value: Foreigner Max. Process Time (max. 60s?)
+      value: Foreigner Max. Process Time
       objectReference: {fileID: 0}
     - target: {fileID: 4249951855164500258, guid: 34a9be414db7eb54ba3e6799e0f06cfd, type: 3}
       propertyPath: m_ChildAlignment
@@ -3848,7 +3848,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2932740343025292446, guid: 34a9be414db7eb54ba3e6799e0f06cfd, type: 3}
       propertyPath: m_text
-      value: No. Servers (max 10)
+      value: No. Servers
       objectReference: {fileID: 0}
     - target: {fileID: 4249951855164500258, guid: 34a9be414db7eb54ba3e6799e0f06cfd, type: 3}
       propertyPath: m_ChildAlignment
