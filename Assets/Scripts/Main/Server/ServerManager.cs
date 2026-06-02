@@ -8,8 +8,8 @@ namespace ImmigrationSim.Main
 {
     public class ServerManager : MonoBehaviour
     {
-        [SerializeField]
-        private StageType stageType;
+        [SerializeField] private SimConfig simConfig;
+        [SerializeField] private StageType stageType;
 
         [SerializeField]
         [Tooltip("Drag in the corresponding QueueControllerEventChannel to stageType.")]
@@ -19,11 +19,10 @@ namespace ImmigrationSim.Main
         [Tooltip("Drag in the corresponding ServerEventChannel to stageType.")]
         private ServerEventChannel serverEventChannel;
 
+        [SerializeField] private GameObject serverPrefab;
         [SerializeField]
-        private GameObject serverPrefab;
-
-        [SerializeField]
-        private SimConfig simConfig;
+        [Tooltip("Drag in the corresponding StageType server grid layout in the scene.")]
+        private GameObject serverGridLayout;
 
         private int numberOfServers;
         private List<ServerEntity> servers;
@@ -48,7 +47,7 @@ namespace ImmigrationSim.Main
 
             for (int i = 0; i < numberOfServers; i++)
             {
-                var server = Instantiate(serverPrefab, transform);
+                var server = Instantiate(serverPrefab, serverGridLayout.transform);
                 var serverScript = server.GetComponent<ServerEntity>();
                 serverScript.Init(stageType, queueControllerEventChannel, serverEventChannel);
                 servers.Add(serverScript);
