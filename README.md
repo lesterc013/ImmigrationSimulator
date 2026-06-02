@@ -8,7 +8,7 @@ Unity 6000.3.16f1
 
 ## Setup Instructions
 
-1. Clone or download the repository
+1. Download repo as zip. Extract all files. I had issues with cloning so I'd recommend just downloading as zip.
 2. Open the project in Unity 6000.3.16f1 via Unity Hub
 3. No additional dependencies are required
 
