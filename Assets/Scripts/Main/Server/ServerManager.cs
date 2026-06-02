@@ -49,7 +49,8 @@ namespace ImmigrationSim.Main
             {
                 var server = Instantiate(serverPrefab, serverGridLayout.transform);
                 var serverScript = server.GetComponent<ServerEntity>();
-                serverScript.Init(stageType, queueControllerEventChannel, serverEventChannel);
+                serverScript.Init(i+1, stageType, queueControllerEventChannel, serverEventChannel);
+                server.name = $"{stageType} Server #{serverScript.Id}";
                 servers.Add(serverScript);
             }
         }

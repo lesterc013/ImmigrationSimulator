@@ -18,11 +18,13 @@ namespace ImmigrationSim.Main.Server
         // This EC also DI-ed by ServerManager to raise the exiting traveller.
         private ServerEventChannel serverEventChannel;
 
+        public int Id { get; private set; }
         public bool IsAvailable { get; private set; }
         public float BusyTime { get; private set; }
 
-        public void Init(StageType stageType, QueueControllerEventChannel queueControllerEventChannel, ServerEventChannel serverEventChannel)
+        public void Init(int id, StageType stageType, QueueControllerEventChannel queueControllerEventChannel, ServerEventChannel serverEventChannel)
         {
+            Id = id;
             serverStageType = stageType;
             IsAvailable = true;
             this.queueControllerEventChannel = queueControllerEventChannel;
