@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace ImmigrationSim.Main.QueueController
 {
-    public class QueueController : MonoBehaviour
+    public class QueueControllerEntity : MonoBehaviour
     {
         [SerializeField]
         [Tooltip("Drag in own stageType's QueueControllerEventChannel.")]
@@ -20,6 +20,7 @@ namespace ImmigrationSim.Main.QueueController
         private ServerManager serverManager;
 
         private Queue<TravellerEntity> queue;
+        public int QueueCount { get { return queue.Count; } }
 
         private void Awake()
         {
