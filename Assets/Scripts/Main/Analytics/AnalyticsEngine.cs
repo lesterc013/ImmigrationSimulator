@@ -19,10 +19,12 @@ namespace ImmigrationSim.Main.Analytics
         private int securityTravellersTotal;
         private float securityTravellersWaitTotal;
         public float SecurityAvgWaitTime { get; private set; }
+        public int SecurityMaxQueueCount { get; private set; }
 
         private int immigrationTravellersTotal;
         private float immigrationTravellersWaitTotal;
         public float ImmigrationAvgWaitTime { get; private set; }
+        public int ImmigrationMaxQueueCount { get; private set; }
 
         // Server utilisation
         public float SecurityServerAvgUtilisationRate { get; private set; }
@@ -40,7 +42,9 @@ namespace ImmigrationSim.Main.Analytics
         private void Awake()
         {
             securityQueueEventChannel.OnTravellerLeftQueue += UpdateSecurityAvgWaitTime;
+            securityQueueEventChannel.OnNewMaxQueueCount += UpdateSecurityMaxQueueCount;
             immigrationQueueEventChannel.OnTravellerLeftQueue += UpdateImmigrationAvgWaitTime;
+            immigrationQueueEventChannel.OnNewMaxQueueCount += UpdateImmigrationMaxQueueCount;
             finalStageServerEventChannel.OnTravellerExitingService += UpdateTravellerCompletedData;
         }
 
@@ -62,9 +66,19 @@ namespace ImmigrationSim.Main.Analytics
             UpdateStageWaitTime(StageType.Security, securityTraveller);
         }
 
+        private void UpdateSecurityMaxQueueCount(int count)
+        {
+            SecurityMaxQueueCount = count;
+        }
+
         private void UpdateImmigrationAvgWaitTime(TravellerEntity securityTraveller)
         {
             UpdateStageWaitTime(StageType.Immigration, securityTraveller);
+        }
+
+        private void UpdateImmigrationMaxQueueCount(int count)
+        {
+            ImmigrationMaxQueueCount = count;
         }
 
         private void UpdateStageWaitTime(StageType stage, TravellerEntity traveller)

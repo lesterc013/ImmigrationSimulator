@@ -19,6 +19,12 @@ namespace ImmigrationSim.Main.QueueController
             OnTravellerLeftQueue?.Invoke(traveller);
         }
 
+        public Action<int> OnNewMaxQueueCount;
+        public void RaiseMaxQueueCount(int newMax)
+        {
+            OnNewMaxQueueCount?.Invoke(newMax);
+        }
+
         /// <summary>
         /// To announce a Server is freed up.
         /// </summary>

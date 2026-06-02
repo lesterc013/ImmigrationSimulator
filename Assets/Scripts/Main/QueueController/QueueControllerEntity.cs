@@ -21,6 +21,7 @@ namespace ImmigrationSim.Main.QueueController
 
         private Queue<TravellerEntity> queue;
         public int QueueCount { get { return queue.Count; } }
+        private int maxQueueCount;
 
         private void Awake()
         {
@@ -33,6 +34,11 @@ namespace ImmigrationSim.Main.QueueController
         private void HandleNewTraveller(TravellerEntity newTraveller)
         {
             queue.Enqueue(newTraveller);
+            if (queue.Count > maxQueueCount)
+            {
+                maxQueueCount = queue.Count;
+                ownQueueControllerEventChannel.RaiseMaxQueueCount(maxQueueCount);
+            }
             newTraveller.RecordQueueJoin(queueStageType);
             TryAssignTraveller();
         }

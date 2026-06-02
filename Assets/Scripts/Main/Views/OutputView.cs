@@ -17,10 +17,12 @@ namespace ImmigrationSim.Main.Views
         [Header("Security")]
         [SerializeField] private TMP_Text securityAvgWaitTimeText;
         [SerializeField] private TMP_Text securityServerAvgUtilRate;
+        [SerializeField] private TMP_Text securityMaxQueueCount;
 
         [Header("Immigration")]
         [SerializeField] private TMP_Text immigrationAvgWaitTimeText;
         [SerializeField] private TMP_Text immigrationServerAvgUtilRate;
+        [SerializeField] private TMP_Text immigrationMaxQueueCount;
 
         private void Update()
         {
@@ -31,9 +33,11 @@ namespace ImmigrationSim.Main.Views
 
             securityAvgWaitTimeText.text = analyticsEngine.SecurityAvgWaitTime.ToString("F2");
             securityServerAvgUtilRate.text = analyticsEngine.SecurityServerAvgUtilisationRate.ToString("F2");
+            securityMaxQueueCount.text = analyticsEngine.SecurityMaxQueueCount.ToString();
 
             immigrationAvgWaitTimeText.text = analyticsEngine.ImmigrationAvgWaitTime.ToString("F2");
             immigrationServerAvgUtilRate.text = analyticsEngine.ImmigrationServerAvgUtilisationRate.ToString("F2");
+            immigrationMaxQueueCount.text = analyticsEngine.ImmigrationMaxQueueCount.ToString();
         }
     }
 }
