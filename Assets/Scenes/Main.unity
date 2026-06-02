@@ -199,9 +199,9 @@ MonoBehaviour:
   throughputText: {fileID: 946953221}
   percentAboveWaitThresholdText: {fileID: 544687735}
   securityAvgWaitTimeText: {fileID: 1744700218}
-  securityServerUtilRate: {fileID: 637317926}
+  securityServerAvgUtilRate: {fileID: 637317926}
   immigrationAvgWaitTimeText: {fileID: 834293971}
-  immigrationServerUtilRate: {fileID: 35730405}
+  immigrationServerAvgUtilRate: {fileID: 35730405}
 --- !u!4 &16354868
 Transform:
   m_ObjectHideFlags: 0
@@ -227,7 +227,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1731570561430398273, guid: 1a3b16e16a1256444950060cc56b83b1, type: 3}
       propertyPath: m_text
-      value: Server Util (%)
+      value: Avg Server Util (%)
       objectReference: {fileID: 0}
     - target: {fileID: 2385645927427464240, guid: 1a3b16e16a1256444950060cc56b83b1, type: 3}
       propertyPath: m_Pivot.x
@@ -1401,7 +1401,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1731570561430398273, guid: 1a3b16e16a1256444950060cc56b83b1, type: 3}
       propertyPath: m_text
-      value: Server Util (%)
+      value: Avg Server Util (%)
       objectReference: {fileID: 0}
     - target: {fileID: 2385645927427464240, guid: 1a3b16e16a1256444950060cc56b83b1, type: 3}
       propertyPath: m_Pivot.x
@@ -3178,7 +3178,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8683831992521099911, guid: 6d0cd8d11ce2bc34db0dd06b9d01b14a, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 300
+      value: 350
       objectReference: {fileID: 0}
     - target: {fileID: 8683831992521099911, guid: 6d0cd8d11ce2bc34db0dd06b9d01b14a, type: 3}
       propertyPath: m_SizeDelta.y
