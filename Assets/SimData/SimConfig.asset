@@ -17,12 +17,12 @@ MonoBehaviour:
   <SimDuration>k__BackingField: 60
   <CitizenRatio>k__BackingField: 75
   <WaitThreshold>k__BackingField: 180
-  <SecurityServerCount>k__BackingField: 50
+  <SecurityServerCount>k__BackingField: 100
   <CitizenMinSecurityProcessingTime>k__BackingField: 5
   <CitizenMaxSecurityProcessingTime>k__BackingField: 30
   <ForeignerMinSecurityProcessingTime>k__BackingField: 30
   <ForeignerMaxSecurityProcessingTime>k__BackingField: 60
-  <ImmigrationServerCount>k__BackingField: 30
+  <ImmigrationServerCount>k__BackingField: 100
   <CitizenMinImmigrationProcessingTime>k__BackingField: 5
   <CitizenMaxImmigrationProcessingTime>k__BackingField: 30
   <ForeignerMinImmigrationProcessingTime>k__BackingField: 30
