@@ -70,14 +70,14 @@ namespace ImmigrationSim.Main
             return false;
         }
 
-        public float GetTotalServersBusyTime()
+        public float GetAverageServersBusyTime()
         {
             float totalBusyTime = 0;
             foreach (var serverEntity in servers)
             {
                 totalBusyTime += serverEntity.BusyTime;
             }
-            return totalBusyTime;
+            return totalBusyTime / servers.Count;
         }
     }
 }

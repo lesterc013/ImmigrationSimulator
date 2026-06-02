@@ -25,8 +25,8 @@ namespace ImmigrationSim.Main.Analytics
         public float ImmigrationAvgWaitTime { get; private set; }
 
         // Server utilisation
-        public float SecurityServerUtilisationRate { get; private set; }
-        public float ImmigrationServerUtilisationRate { get; private set; }
+        public float SecurityServerAvgUtilisationRate { get; private set; }
+        public float ImmigrationServerAvgUtilisationRate { get; private set; }
 
         // Global metrics
         public int TotalTravellersCompleted { get; private set; }
@@ -41,7 +41,7 @@ namespace ImmigrationSim.Main.Analytics
         {
             securityQueueEventChannel.OnTravellerLeftQueue += UpdateSecurityAvgWaitTime;
             immigrationQueueEventChannel.OnTravellerLeftQueue += UpdateImmigrationAvgWaitTime;
-            finalStageServerEventChannel.OnTravellerExitingService += HandleTravellerCompletedData;
+            finalStageServerEventChannel.OnTravellerExitingService += UpdateTravellerCompletedData;
         }
 
         private void Update()
@@ -49,8 +49,8 @@ namespace ImmigrationSim.Main.Analytics
             if (SimClock.Instance.IsFinished) 
                 return;
 
-            SecurityServerUtilisationRate = CalculateServerUtilisationRate(securityServerManager.GetTotalServersBusyTime());
-            ImmigrationServerUtilisationRate = CalculateServerUtilisationRate(immigrationServerManager.GetTotalServersBusyTime());
+            SecurityServerAvgUtilisationRate = CalculateServerUtilisationRate(securityServerManager.GetAverageServersBusyTime());
+            ImmigrationServerAvgUtilisationRate = CalculateServerUtilisationRate(immigrationServerManager.GetAverageServersBusyTime());
             if (TotalTravellersCompleted > 0)
             {
                 Throughput = TotalTravellersCompleted / (SimClock.Instance.TotalSimTimeElapsed / 60f);
@@ -60,13 +60,11 @@ namespace ImmigrationSim.Main.Analytics
         private void UpdateSecurityAvgWaitTime(TravellerEntity securityTraveller)
         {
             UpdateStageWaitTime(StageType.Security, securityTraveller);
-            // TODO: Update the TMP Text display
         }
 
         private void UpdateImmigrationAvgWaitTime(TravellerEntity securityTraveller)
         {
             UpdateStageWaitTime(StageType.Immigration, securityTraveller);
-            // TODO: Update the TMP Text display
         }
 
         private void UpdateStageWaitTime(StageType stage, TravellerEntity traveller)
@@ -77,14 +75,12 @@ namespace ImmigrationSim.Main.Analytics
                 securityTravellersTotal++;
                 securityTravellersWaitTotal += waitTime;
                 SecurityAvgWaitTime = securityTravellersWaitTotal / securityTravellersTotal;
-                Debug.Log($"[Analytics] Security traveller {traveller.Id} wait: {waitTime:F2}s | Running avg: {SecurityAvgWaitTime:F2}s | Count: {securityTravellersTotal}");
             }
             else if (stage == StageType.Immigration)
             {
                 immigrationTravellersTotal++;
                 immigrationTravellersWaitTotal += waitTime;
                 ImmigrationAvgWaitTime = immigrationTravellersWaitTotal / immigrationTravellersTotal;
-                Debug.Log($"[Analytics] Immigration traveller {traveller.Id} wait: {waitTime:F2}s | Running avg: {ImmigrationAvgWaitTime:F2}s | Count: {immigrationTravellersTotal}");
             }
             else
             {
@@ -100,7 +96,7 @@ namespace ImmigrationSim.Main.Analytics
             return (serverTotalBusyTime / SimClock.Instance.TotalSimTimeElapsed) * 100;
         }
 
-        private void HandleTravellerCompletedData(TravellerEntity traveller)
+        private void UpdateTravellerCompletedData(TravellerEntity traveller)
         {
             TotalTravellersCompleted++;
 
@@ -120,15 +116,13 @@ namespace ImmigrationSim.Main.Analytics
                 travellersAboveThreshold++;
             }
             PercentageAboveWaitThreshold = (float)travellersAboveThreshold / TotalTravellersCompleted * 100f;
-
-            Debug.Log($"[Analytics] Traveller {traveller.Id} completed | TimeInSystem: {timeInSystem:F2}s | TotalWaitTime: {totalWaitTime:F2}s | AboveThreshold: {totalWaitTime > simConfig.WaitThreshold} | % Above: {PercentageAboveWaitThreshold:F1}% | Throughput: {Throughput:F2}/min");
         }
 
         private void OnDestroy()
         {
             securityQueueEventChannel.OnTravellerLeftQueue -= UpdateSecurityAvgWaitTime;
             immigrationQueueEventChannel.OnTravellerLeftQueue -= UpdateImmigrationAvgWaitTime;
-            finalStageServerEventChannel.OnTravellerExitingService -= HandleTravellerCompletedData;
+            finalStageServerEventChannel.OnTravellerExitingService -= UpdateTravellerCompletedData;
         }
     }
 }
