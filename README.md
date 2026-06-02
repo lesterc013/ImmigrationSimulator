@@ -1,6 +1,6 @@
 # ImmigrationSim
 
-A discrete-event simulation of an immigration checkpoint built in Unity 6, modelling traveller flow through Security and Immigration stages.
+A simulation of an immigration checkpoint built in Unity 6, modelling traveller flow through Security and Immigration stages.
 
 ## Engine Version
 
