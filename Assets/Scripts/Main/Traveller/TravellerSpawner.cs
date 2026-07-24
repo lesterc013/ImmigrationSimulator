@@ -31,7 +31,9 @@ namespace ImmigrationSim.Main.Traveller
         {
             timeTillSpawn -= SimClock.Instance.SimDeltaTime;
 
-            if (timeTillSpawn <= 0)
+            // At high SimSpeeds, SimDeltaTime might be so huge that timeTillSpawn cannot recover i.e. becomes super big -ve number,
+            // Using a "while" instead of "if" changes behaviour to "I'll keep processing until I've caught up with however much time just passed"
+            while (timeTillSpawn <= 0)
             {
                 SpawnTraveller();
             }
@@ -45,6 +47,7 @@ namespace ImmigrationSim.Main.Traveller
 
             // After spawning, reset the countdown timer with a cumulative timing to help with the spawn overshoots.
             timeTillSpawn += GetTimeTillSpawn();
+            Debug.Log($"New timeTillSpawn {timeTillSpawn}");
         }
 
         private TravellerType GetTravellerType()
