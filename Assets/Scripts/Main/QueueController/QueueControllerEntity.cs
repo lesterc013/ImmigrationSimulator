@@ -1,4 +1,5 @@
 using ImmigrationSim.Core;
+using ImmigrationSim.Main.Server;
 using ImmigrationSim.Main.Traveller;
 using System.Collections.Generic;
 using UnityEngine;

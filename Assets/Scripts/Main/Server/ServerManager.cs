@@ -1,10 +1,9 @@
 using ImmigrationSim.Core;
 using ImmigrationSim.Main.QueueController;
-using ImmigrationSim.Main.Server;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace ImmigrationSim.Main
+namespace ImmigrationSim.Main.Server
 {
     public class ServerManager : MonoBehaviour
     {
