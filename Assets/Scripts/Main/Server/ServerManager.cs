@@ -26,7 +26,7 @@ namespace ImmigrationSim.Main.Server
         private int numberOfServers;
         private List<ServerEntity> servers;
 
-        private void Awake()
+        public void Init()
         {
             if (stageType == StageType.Security)
             {

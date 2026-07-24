@@ -26,6 +26,13 @@ namespace ImmigrationSim.Main
         {
             // Call Init() on every MonoBehaviour that uses Awake
             simClock.Init();
+            securityServerManager.Init();
+            immigrationServerManager.Init();
+            securityQueueController.Init();
+            immigrationQueueController.Init();
+            stageConnector.Init();
+            analyticsEngine.Init();
+            travellerSpawner.Init();
         }
     }
 }

@@ -18,7 +18,7 @@ namespace ImmigrationSim.Main.Traveller
 
         private float timeTillSpawn;
 
-        private void Awake()
+        public void Init()
         {
             travellersPerSecond = simConfig.TravellersPerSecond;
             citizenForeignerSplit = simConfig.CitizenRatio;

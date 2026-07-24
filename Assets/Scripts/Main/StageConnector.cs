@@ -13,7 +13,7 @@ namespace ImmigrationSim.Main
         [SerializeField]
         private QueueControllerEventChannel nextStageQueueControllerEventChannel;
 
-        private void Awake()
+        public void Init()
         {
             prevStageServerEventChannel.OnTravellerExitingService += MoveTravellerToNextStage;
         }

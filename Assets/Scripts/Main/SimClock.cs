@@ -45,10 +45,14 @@ namespace ImmigrationSim.Main
             else
             {
                 _instance = this;
-                simDuration = simConfig.SimDuration;
-                IsFinished = false;
-                simSpeed = simConfig.SimSpeed;
             }
+        }
+
+        public void Init()
+        {
+            simDuration = simConfig.SimDuration;
+            IsFinished = false;
+            simSpeed = simConfig.SimSpeed;
         }
 
         private void Update()

@@ -24,7 +24,7 @@ namespace ImmigrationSim.Main.QueueController
         public int QueueCount { get { return queue.Count; } }
         private int maxQueueCount;
 
-        private void Awake()
+        public void Init()
         {
             queue = new Queue<TravellerEntity>();
 

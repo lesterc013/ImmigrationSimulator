@@ -39,7 +39,7 @@ namespace ImmigrationSim.Main.Analytics
         private float totalTimeInSystem;
         private int travellersAboveThreshold;
 
-        private void Awake()
+        public void Init()
         {
             securityQueueEventChannel.OnTravellerLeftQueue += UpdateSecurityAvgWaitTime;
             securityQueueEventChannel.OnNewMaxQueueCount += UpdateSecurityMaxQueueCount;

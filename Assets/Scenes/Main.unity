@@ -422,13 +422,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Main::ImmigrationSim.Main.SimBootStrapper
   simClock: {fileID: 14993238}
-  securityServerManager: {fileID: 0}
-  immigrationServerManager: {fileID: 0}
-  securityQueueController: {fileID: 0}
-  immigrationQueueController: {fileID: 0}
-  stageConnector: {fileID: 0}
-  analyticsEngine: {fileID: 0}
-  travellerSpawner: {fileID: 0}
+  securityServerManager: {fileID: 928977602}
+  immigrationServerManager: {fileID: 1475341869}
+  securityQueueController: {fileID: 1318977706}
+  immigrationQueueController: {fileID: 657617466}
+  stageConnector: {fileID: 572846139}
+  analyticsEngine: {fileID: 1740618210}
+  travellerSpawner: {fileID: 1727485107}
 --- !u!4 &30461200
 Transform:
   m_ObjectHideFlags: 0
